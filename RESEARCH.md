@@ -30,4 +30,47 @@ For a complete study-level experiment, the localizer is refit with a fixed 16-ep
 | 3 | 1.879 mm |
 | 4 | 1.963 mm |
 
-The next grading experiment uses these crops and a branch that preserves where features appear inside a crop. It starts with the existing classifier for the same outer fold and uses a fixed four-epoch schedule. The comparison uses all 75 condition, level and grade cells across five folds and reports weighted log loss alongside AUROC. [Multi-sequence MRI research](https://www.robots.ox.ac.uk/~vgg/publications/2025/Park25/park25.pdf)
+Replacing the crops alone raised AUROC from **0.8597 to 0.8680** for the same five frozen classifiers. The spatial-detail grader then added a branch that preserves where features appear inside a crop. It started with the existing classifier for the same outer fold and used a fixed four-epoch schedule. The equal-weight blend combines the spatial-detail scores with the previous ensemble. [Multi-sequence MRI research](https://www.robots.ox.ac.uk/~vgg/publications/2025/Park25/park25.pdf)
+
+| Metric across 1,975 held-out studies | Previous ensemble | Spatial-detail grader | Equal blend |
+| --- | ---: | ---: | ---: |
+| Macro AUROC across all 75 cells | 0.8534 | 0.8714 | **0.8740** |
+| Macro average precision | 0.5597 | 0.5853 | **0.5916** |
+| Weighted log loss | 0.5260 | 0.5789 | **0.4917** |
+| Normal or mild AUROC | 0.8657 | 0.8835 | **0.8862** |
+| Moderate AUROC | 0.7937 | 0.8086 | **0.8156** |
+| Severe AUROC | 0.9007 | **0.9220** | 0.9203 |
+
+The equal blend has a 95% study-bootstrap AUROC interval of **0.8685–0.8793**. The overall comparison reuses the established folds, and the single local test study has no released grades. I ran the new raw-DICOM inference on that study and verified all 25 probability rows.
+
+## Reproduce the five-fold comparison
+
+Run the [original training workflow](README.md#reproduce-the-experiment) to generate the reference fold checkpoints and prior selection. The following steps reproduce the new spatial-detail experiment. The five outer-fold classifiers use a fixed schedule and are scored after training.
+
+```powershell
+$PSNativeCommandUseErrorActionPreference = $true
+$ErrorActionPreference = 'Stop'
+$learned = 'search-artifacts/learned-localizer'
+$graders = 'search-artifacts/spatial-detail-runs'
+$analysis = 'search-artifacts/spatial-detail-assessment'
+$plan = "$analysis/deployment.json"
+$cache = 'artifacts/cache/spine-train'
+$folds = 'artifacts/spine/folds.csv'
+$localizer = 'artifacts/spine/localization'
+$reference = 'search-artifacts/runs/spine'
+
+& $p -m medimage.spine_heatmap_crossfit --cache $cache --folds $folds `
+    --reference $localizer --output $learned --epochs 16 --batch 32
+foreach ($fold in 0..4) {
+    & $p -m medimage.spine_train --root $data --cache $cache --folds $folds `
+        --localization $learned --weights $torchCache --parent "artifacts/spine/runs/fold-$fold/final.pt" `
+        --output "$graders/fold-$fold" --fold $fold --epochs 4 --batch-size 10 --spatial-detail --seed 9391
+}
+& $p -m medimage.spine_grade_compare --root $data --folds $folds --runs $graders `
+    --baseline "$reference/selected-oof.csv" --output $analysis --bootstrap 1000
+& $p -m medimage.spine_detail_infer lock --train-cache $cache --folds $folds `
+    --learned $learned --reference $localizer --runs $graders --comparison "$analysis/metrics.json" `
+    --reference-selection "$reference/selection.json" --output $plan
+```
+
+For the controlled crop-only comparison, run `medimage.spine_crop_compare` with the same data, cache and folds, the original classifiers, and both region directories. Start with the [prediction walkthrough](WALKTHROUGH.md) to see what the new localizer and graders receive on one example.

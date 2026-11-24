@@ -1,5 +1,7 @@
 # Lumbar MRI discrimination
 
+This report describes the previous ensemble. The [learned-localization and grading comparison](RESEARCH.md) reached 0.8740 on the same five held-out folds.
+
 | Metric | Held-out result |
 | --- | ---: |
 | Macro one-vs-rest AUROC | **0.8534** |

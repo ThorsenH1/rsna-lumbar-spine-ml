@@ -2,19 +2,19 @@
 
 DICOM geometry, nested landmark localization, and severity grading at five lumbar levels.
 
-**0.8534 macro AUROC** and **0.5260 weighted log loss** over five held-out folds. The AUROC interval is 0.8472–0.8599.
+**0.8740 macro AUROC** and **0.4917 weighted log loss** over five held-out folds. The 95% study-bootstrap AUROC interval is 0.8685–0.8793.
 
-Selected configuration `incumbent+raw-0.15`. See the [discrimination audit](DISCRIMINATION.md), [experiment report](REPORT.md), [search trajectories](figures/search.png), [aggregate metrics](metrics.json), and [synthetic prediction example](examples/README.md).
+The selected model blends the previous ensemble and a spatial-detail grader. See the [full research comparison](RESEARCH.md), [earlier discrimination audit](DISCRIMINATION.md), [search trajectories](figures/search.png), and [synthetic prediction example](examples/README.md).
 
 ## Start with one prediction
 
-See a synthetic MRI study, the actual crop selected by the localizer and the model's three grade probabilities at L4–L5. The [walkthrough](WALKTHROUGH.md) explains the model and shows how to generate the study and run it yourself.
+See a synthetic MRI study, the actual crop selected by the localizer and the model's three grade probabilities at L4–L5. The [walkthrough](WALKTHROUGH.md) explains how to generate the study and run it yourself. [See the crops for all five disc levels](WHERE-THE-MODEL-LOOKS.md)
 
 ![Synthetic MRI planes, a selected L4–L5 region and the three grade probabilities](examples/workflow.png)
 
 ## Benchmark
 
-![Benchmark figure for RSNA Lumbar Spine MRI Grading](figures/benchmark.png)
+![AUROC by severity for the reference and spatial-detail models](figures/spatial-detail-comparison.png)
 
 The [research report](RESEARCH.md) compares the original localizer with a learned disc detector and measures what changes when the grading model receives better crops.
 
@@ -65,10 +65,6 @@ The runner writes the initial experiment under `artifacts/` and the extended sea
 
 ## Predict from raw input
 
-Use the model selection and checkpoint roots produced by the runner.
-
-```powershell
-& $p -m medimage.search_predict spine --selection search-artifacts/runs/spine/selection.json --search search-artifacts/runs/spine --weights $hf --root $data --cache artifacts/cache/spine-test --localization artifacts/spine/localization --incumbent artifacts/inference/spine.csv --output search-artifacts/inference/spine.csv
-```
+Run the [spatial-detail reproduction commands](RESEARCH.md#reproduce-the-five-fold-comparison) to prepare the current deployment lock. The [prediction walkthrough](WALKTHROUGH.md) shows the raw DICOM commands for the current ensemble. To score the supplied real test study, use its dataset root and a reference prediction generated for that same study.
 
 The [example](examples/README.md) runs the selected local models on deterministic synthetic inputs. This is a research and education project.

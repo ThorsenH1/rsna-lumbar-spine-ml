@@ -1,1 +1,1 @@
-medimage-ml-lab @ git+https://github.com/ThorsenH1/medimage-ml-lab.git@3073ec32b9df20feea79934f648e5e64fc48e6cb
+medimage-ml-lab @ git+https://github.com/ThorsenH1/medimage-ml-lab.git@7ac4bc1b41f41017a4ba7488a66da1f309d7d180
