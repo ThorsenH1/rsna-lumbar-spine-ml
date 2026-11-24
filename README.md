@@ -6,7 +6,17 @@ DICOM geometry, nested landmark localization, and severity grading at five lumba
 
 Selected configuration `incumbent+raw-0.15`. See the [discrimination audit](DISCRIMINATION.md), [experiment report](REPORT.md), [search trajectories](figures/search.png), [aggregate metrics](metrics.json), and [synthetic prediction example](examples/README.md).
 
+## Start with one prediction
+
+See a synthetic MRI study, the actual crop selected by the localizer and the model's three grade probabilities at L4–L5. The [walkthrough](WALKTHROUGH.md) explains the model and shows how to generate the study and run it yourself.
+
+![Synthetic MRI planes, a selected L4–L5 region and the three grade probabilities](examples/workflow.png)
+
+## Benchmark
+
 ![Benchmark figure for RSNA Lumbar Spine MRI Grading](figures/benchmark.png)
+
+The [research report](RESEARCH.md) compares the original localizer with a learned disc detector and measures what changes when the grading model receives better crops.
 
 ## Dataset
 
