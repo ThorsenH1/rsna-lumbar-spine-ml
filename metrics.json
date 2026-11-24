@@ -1,0 +1,2613 @@
+{
+  "selected": {
+    "name": "incumbent+raw-0.15",
+    "fraction": 0.15,
+    "calibrated": false,
+    "overall": {
+      "score": 0.5260491825337059,
+      "spinal": 0.4019037248578119,
+      "foraminal": 0.6304981560225158,
+      "subarticular": 0.6900868373655487,
+      "any_severe_spinal": 0.3817080118889475
+    },
+    "per_fold": [
+      0.5356151148213273,
+      0.5241645743547639,
+      0.5404560474496075,
+      0.5152491331570954,
+      0.5145463579180228
+    ],
+    "better_folds": 5,
+    "delta_ci95": [
+      -0.006732275787972716,
+      -0.002446850158960344
+    ]
+  },
+  "candidates": [
+    {
+      "name": "incumbent+raw-0.15",
+      "fraction": 0.15,
+      "calibrated": false,
+      "overall": {
+        "score": 0.5260491825337059,
+        "spinal": 0.4019037248578119,
+        "foraminal": 0.6304981560225158,
+        "subarticular": 0.6900868373655487,
+        "any_severe_spinal": 0.3817080118889475
+      },
+      "per_fold": [
+        0.5356151148213273,
+        0.5241645743547639,
+        0.5404560474496075,
+        0.5152491331570954,
+        0.5145463579180228
+      ],
+      "better_folds": 5,
+      "delta_ci95": [
+        -0.006732275787972716,
+        -0.002446850158960344
+      ]
+    },
+    {
+      "name": "incumbent+cal-0.15",
+      "fraction": 0.15,
+      "calibrated": true,
+      "overall": {
+        "score": 0.5263992289747306,
+        "spinal": 0.4021479565372387,
+        "foraminal": 0.6308886371644788,
+        "subarticular": 0.6906899460004092,
+        "any_severe_spinal": 0.3818703761967954
+      },
+      "per_fold": [
+        0.5355893770346389,
+        0.5240873361002709,
+        0.5407259305603934,
+        0.5152740967739579,
+        0.5161050943348795
+      ],
+      "better_folds": 5,
+      "delta_ci95": [
+        -0.00636611917756773,
+        -0.0020818656538995756
+      ]
+    },
+    {
+      "name": "incumbent+raw-0.30",
+      "fraction": 0.3,
+      "calibrated": false,
+      "overall": {
+        "score": 0.5277298565224228,
+        "spinal": 0.40271139239950526,
+        "foraminal": 0.6335589089629743,
+        "subarticular": 0.6905298070984682,
+        "any_severe_spinal": 0.3841193176287435
+      },
+      "per_fold": [
+        0.538381913954603,
+        0.5253324730132747,
+        0.5347168792205064,
+        0.5220498850710547,
+        0.5180340250720864
+      ],
+      "better_folds": 3,
+      "delta_ci95": [
+        -0.006635807972465235,
+        0.0008744003441221715
+      ]
+    },
+    {
+      "name": "incumbent+cal-0.30",
+      "fraction": 0.3,
+      "calibrated": true,
+      "overall": {
+        "score": 0.528347475028363,
+        "spinal": 0.40317855696248495,
+        "foraminal": 0.6341974248434913,
+        "subarticular": 0.6916075301493957,
+        "any_severe_spinal": 0.38440638815808037
+      },
+      "per_fold": [
+        0.538317802151666,
+        0.5251567319724192,
+        0.5352086747887623,
+        0.5221974664045026,
+        0.520726005060277
+      ],
+      "better_folds": 3,
+      "delta_ci95": [
+        -0.0059201595966166965,
+        0.001522991268284907
+      ]
+    },
+    {
+      "name": "incumbent",
+      "fraction": 0.0,
+      "calibrated": false,
+      "overall": {
+        "score": 0.5306879132324464,
+        "spinal": 0.4084205119600503,
+        "foraminal": 0.6326430995001195,
+        "subarticular": 0.6965156365713476,
+        "any_severe_spinal": 0.3851724048982678
+      },
+      "per_fold": [
+        0.5388972173314914,
+        0.528272526121507,
+        0.5522300464795709,
+        0.5174498644338372,
+        0.5163375421873787
+      ],
+      "better_folds": 0,
+      "delta_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "incumbent+raw-0.50",
+      "fraction": 0.5,
+      "calibrated": false,
+      "overall": {
+        "score": 0.5376579889979427,
+        "spinal": 0.4116194068315678,
+        "foraminal": 0.6442181875057803,
+        "subarticular": 0.69915016266176,
+        "any_severe_spinal": 0.3956441989926628
+      },
+      "per_fold": [
+        0.5501534567242982,
+        0.5330820517858421,
+        0.5344933013151556,
+        0.5408507197485729,
+        0.529714384623981
+      ],
+      "better_folds": 1,
+      "delta_ci95": [
+        0.001213338036636919,
+        0.013097090483183686
+      ]
+    },
+    {
+      "name": "incumbent+cal-0.50",
+      "fraction": 0.5,
+      "calibrated": true,
+      "overall": {
+        "score": 0.5383775589424857,
+        "spinal": 0.4121284600884021,
+        "foraminal": 0.6448159747678107,
+        "subarticular": 0.7005208537510572,
+        "any_severe_spinal": 0.39604494716267263
+      },
+      "per_fold": [
+        0.5499685490396324,
+        0.5328207249377067,
+        0.5352629185304364,
+        0.5407656511725667,
+        0.5330789489207766
+      ],
+      "better_folds": 1,
+      "delta_ci95": [
+        0.002054469467275845,
+        0.013739469682492256
+      ]
+    },
+    {
+      "name": "incumbent+raw-0.70",
+      "fraction": 0.7,
+      "calibrated": false,
+      "overall": {
+        "score": 0.5567235453161095,
+        "spinal": 0.429886148967338,
+        "foraminal": 0.6626825890918093,
+        "subarticular": 0.7169497653594673,
+        "any_severe_spinal": 0.4173756778458231
+      },
+      "per_fold": [
+        0.5702351130938993,
+        0.5482133911469701,
+        0.5428293997462877,
+        0.5727631038017571,
+        0.5497737022045368
+      ],
+      "better_folds": 1,
+      "delta_ci95": [
+        0.017865280834824887,
+        0.03476602785081694
+      ]
+    },
+    {
+      "name": "incumbent+cal-0.70",
+      "fraction": 0.7,
+      "calibrated": true,
+      "overall": {
+        "score": 0.5568396509618367,
+        "spinal": 0.42983770111311287,
+        "foraminal": 0.6625279394353936,
+        "subarticular": 0.7179768209568694,
+        "any_severe_spinal": 0.41701614234197104
+      },
+      "per_fold": [
+        0.5697055109410143,
+        0.5479491392022888,
+        0.5437582651959134,
+        0.5708717728258688,
+        0.5521022338704374
+      ],
+      "better_folds": 1,
+      "delta_ci95": [
+        0.01820646492548644,
+        0.034830298653224775
+      ]
+    },
+    {
+      "name": "feature_calibrated",
+      "fraction": 1.0,
+      "calibrated": true,
+      "overall": {
+        "score": 0.6074738718068033,
+        "spinal": 0.48726518427354903,
+        "foraminal": 0.7080698970269066,
+        "subarticular": 0.7672039272271232,
+        "any_severe_spinal": 0.46735647869963426
+      },
+      "per_fold": [
+        0.6270770876803932,
+        0.5870447717744964,
+        0.572450641647733,
+        0.6556427331959054,
+        0.5958754224919582
+      ],
+      "better_folds": 0,
+      "delta_ci95": [
+        0.0637466995781516,
+        0.09086677792088617
+      ]
+    },
+    {
+      "name": "feature_uncalibrated",
+      "fraction": 1.0,
+      "calibrated": false,
+      "overall": {
+        "score": 0.613972890953265,
+        "spinal": 0.4942907769209442,
+        "foraminal": 0.7132455518689131,
+        "subarticular": 0.7705207765775184,
+        "any_severe_spinal": 0.47783445844568434
+      },
+      "per_fold": [
+        0.6300123265049908,
+        0.5870354829391509,
+        0.57181350396922,
+        0.6744458381363346,
+        0.6074274932318267
+      ],
+      "better_folds": 0,
+      "delta_ci95": [
+        0.0690150565503146,
+        0.0989152468687651
+      ]
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "inner_val": 1,
+      "trial": 11,
+      "training_studies": 1582,
+      "validation_studies": 393,
+      "inner_training_count": 1181,
+      "inner_validation_count": 401,
+      "temperature": [
+        1.0252720292178958,
+        1.066212333635878,
+        1.0015638764832058
+      ],
+      "recipe": {
+        "kind": "attention",
+        "descriptor": "hybrid",
+        "width": 96,
+        "lr": 0.0011,
+        "decay": 0.012,
+        "dropout": 0.4,
+        "ordinal": 0.12,
+        "severe": 0.4,
+        "class_power": 1.0
+      },
+      "fit_epochs": 6,
+      "outer": {
+        "score": 0.6300123265049908,
+        "spinal": 0.49063860411968996,
+        "foraminal": 0.7568127779788945,
+        "subarticular": 0.7856675227914272,
+        "any_severe_spinal": 0.48693040112995145
+      },
+      "outer_calibrated": {
+        "score": 0.6270770876803932,
+        "spinal": 0.4883943314564148,
+        "foraminal": 0.7485421988524179,
+        "subarticular": 0.7855437638164389,
+        "any_severe_spinal": 0.4858280565963012
+      },
+      "trials": [
+        {
+          "trial": 0,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "deep",
+            "width": 96,
+            "lr": 0.001,
+            "decay": 0.004,
+            "dropout": 0.18,
+            "ordinal": 0.0,
+            "severe": 0.6,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6474424216906511,
+          "spinal": 0.551069987845784,
+          "foraminal": 0.768675880127034,
+          "subarticular": 0.8239117026155094,
+          "any_severe_spinal": 0.44611211617427704,
+          "seconds": 0.28
+        },
+        {
+          "trial": 1,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.01,
+            "dropout": 0.25,
+            "ordinal": 0.12,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.657769219990646,
+          "spinal": 0.5578523337837276,
+          "foraminal": 0.7874529472622573,
+          "subarticular": 0.8191347448534998,
+          "any_severe_spinal": 0.46663685406309935,
+          "seconds": 0.23
+        },
+        {
+          "trial": 2,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.003,
+            "dropout": 0.3,
+            "ordinal": 0.17,
+            "severe": 1.0,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6262221861388967,
+          "spinal": 0.5113686957928734,
+          "foraminal": 0.7458740810307062,
+          "subarticular": 0.8099500986361476,
+          "any_severe_spinal": 0.4376958690958593,
+          "seconds": 0.23
+        },
+        {
+          "trial": 3,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.0011,
+            "decay": 0.009,
+            "dropout": 0.3,
+            "ordinal": 0.05,
+            "severe": 0.55,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6252653787879696,
+          "spinal": 0.5159129660867074,
+          "foraminal": 0.7060159823979495,
+          "subarticular": 0.8063037018480435,
+          "any_severe_spinal": 0.4728288648191778,
+          "seconds": 0.25
+        },
+        {
+          "trial": 4,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.015,
+            "dropout": 0.33,
+            "ordinal": 0.15,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6472800765441685,
+          "spinal": 0.5293774925722158,
+          "foraminal": 0.7552970554000382,
+          "subarticular": 0.8279058115758637,
+          "any_severe_spinal": 0.47653994662855637,
+          "seconds": 0.3
+        },
+        {
+          "trial": 5,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.607078650841439,
+          "spinal": 0.49402706971811555,
+          "foraminal": 0.7244605664982503,
+          "subarticular": 0.7817956160111349,
+          "any_severe_spinal": 0.42803135113825524,
+          "seconds": 0.3
+        },
+        {
+          "trial": 6,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 5,
+          "score": 0.5996170136720956,
+          "spinal": 0.47822153651282484,
+          "foraminal": 0.7214718772773822,
+          "subarticular": 0.7919535197131813,
+          "any_severe_spinal": 0.40682112118499447,
+          "seconds": 0.25
+        },
+        {
+          "trial": 7,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.00065,
+            "decay": 0.005,
+            "dropout": 0.28,
+            "ordinal": 0.12,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6156668900753745,
+          "spinal": 0.5277266586325423,
+          "foraminal": 0.7266173289460595,
+          "subarticular": 0.7898033558867757,
+          "any_severe_spinal": 0.41852021683612034,
+          "seconds": 0.3
+        },
+        {
+          "trial": 8,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0009,
+            "decay": 0.01,
+            "dropout": 0.35,
+            "ordinal": 0.15,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6611546096532105,
+          "spinal": 0.5573336183846941,
+          "foraminal": 0.7928704963742127,
+          "subarticular": 0.8237852610014831,
+          "any_severe_spinal": 0.4706290628524524,
+          "seconds": 0.31
+        },
+        {
+          "trial": 9,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.589018930489392,
+          "spinal": 0.48282933070191,
+          "foraminal": 0.7222574790641092,
+          "subarticular": 0.7666035960883768,
+          "any_severe_spinal": 0.3843853161031723,
+          "seconds": 0.33
+        },
+        {
+          "trial": 10,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.0004,
+            "decay": 0.015,
+            "dropout": 0.5,
+            "ordinal": 0.3,
+            "severe": 1.2,
+            "class_power": 0.85
+          },
+          "epochs": 5,
+          "score": 0.6057046407511348,
+          "spinal": 0.5019190078246974,
+          "foraminal": 0.7329048818253686,
+          "subarticular": 0.7860177455708113,
+          "any_severe_spinal": 0.40197692778366156,
+          "seconds": 0.33
+        },
+        {
+          "trial": 11,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.5829079014883328,
+          "spinal": 0.4802194276473039,
+          "foraminal": 0.7073433609058246,
+          "subarticular": 0.7512161268121611,
+          "any_severe_spinal": 0.39285269058804156,
+          "seconds": 0.3
+        },
+        {
+          "trial": 11,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 6,
+          "score": 0.5765170091844655,
+          "spinal": 0.4882468808318926,
+          "foraminal": 0.6976596750526843,
+          "subarticular": 0.7433072057072677,
+          "any_severe_spinal": 0.3768542751460172,
+          "seconds": 0.27
+        },
+        {
+          "trial": 9,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 7,
+          "score": 0.5796750592163193,
+          "spinal": 0.4797865727601183,
+          "foraminal": 0.7131481535487425,
+          "subarticular": 0.7547543127806603,
+          "any_severe_spinal": 0.37101119777575625,
+          "seconds": 0.27
+        },
+        {
+          "trial": 6,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 5,
+          "score": 0.5996170136720956,
+          "spinal": 0.47822153651282484,
+          "foraminal": 0.7214718772773822,
+          "subarticular": 0.7919535197131813,
+          "any_severe_spinal": 0.40682112118499447,
+          "seconds": 0.25
+        },
+        {
+          "trial": 10,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.0004,
+            "decay": 0.015,
+            "dropout": 0.5,
+            "ordinal": 0.3,
+            "severe": 1.2,
+            "class_power": 0.85
+          },
+          "epochs": 7,
+          "score": 0.6012595578277486,
+          "spinal": 0.5017768710240761,
+          "foraminal": 0.7245087891340359,
+          "subarticular": 0.7704804734857644,
+          "any_severe_spinal": 0.4082720976671182,
+          "seconds": 0.3
+        },
+        {
+          "trial": 11,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 6,
+          "score": 0.5765170091844655,
+          "spinal": 0.4882468808318926,
+          "foraminal": 0.6976596750526843,
+          "subarticular": 0.7433072057072677,
+          "any_severe_spinal": 0.3768542751460172,
+          "seconds": 0.27
+        },
+        {
+          "trial": 9,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 7,
+          "score": 0.5796750592163193,
+          "spinal": 0.4797865727601183,
+          "foraminal": 0.7131481535487425,
+          "subarticular": 0.7547543127806603,
+          "any_severe_spinal": 0.37101119777575625,
+          "seconds": 0.27
+        }
+      ]
+    },
+    {
+      "fold": 1,
+      "inner_val": 2,
+      "trial": 11,
+      "training_studies": 1574,
+      "validation_studies": 401,
+      "inner_training_count": 1181,
+      "inner_validation_count": 393,
+      "temperature": [
+        0.9808304820998016,
+        0.9809474077452586,
+        1.0289903180528985
+      ],
+      "recipe": {
+        "kind": "attention",
+        "descriptor": "hybrid",
+        "width": 96,
+        "lr": 0.0011,
+        "decay": 0.012,
+        "dropout": 0.4,
+        "ordinal": 0.12,
+        "severe": 0.4,
+        "class_power": 1.0
+      },
+      "fit_epochs": 4,
+      "outer": {
+        "score": 0.5870354829391509,
+        "spinal": 0.484968367749773,
+        "foraminal": 0.704657059113921,
+        "subarticular": 0.752728961668001,
+        "any_severe_spinal": 0.4057875432249089
+      },
+      "outer_calibrated": {
+        "score": 0.5870447717744964,
+        "spinal": 0.4852157788408177,
+        "foraminal": 0.7044556249579708,
+        "subarticular": 0.7537540738781155,
+        "any_severe_spinal": 0.40475360942108196
+      },
+      "trials": [
+        {
+          "trial": 0,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "deep",
+            "width": 96,
+            "lr": 0.001,
+            "decay": 0.004,
+            "dropout": 0.18,
+            "ordinal": 0.0,
+            "severe": 0.6,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6192320555774379,
+          "spinal": 0.5261037562408305,
+          "foraminal": 0.7242243258122607,
+          "subarticular": 0.8009612636180069,
+          "any_severe_spinal": 0.4256388766386534,
+          "seconds": 0.25
+        },
+        {
+          "trial": 1,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.01,
+            "dropout": 0.25,
+            "ordinal": 0.12,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6675208717765504,
+          "spinal": 0.5600504068377413,
+          "foraminal": 0.7633572702035679,
+          "subarticular": 0.838336398241204,
+          "any_severe_spinal": 0.5083394118236881,
+          "seconds": 0.22
+        },
+        {
+          "trial": 2,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.003,
+            "dropout": 0.3,
+            "ordinal": 0.17,
+            "severe": 1.0,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6228326291312176,
+          "spinal": 0.5312037373935439,
+          "foraminal": 0.7206777993702088,
+          "subarticular": 0.7952729419111496,
+          "any_severe_spinal": 0.44417603784996795,
+          "seconds": 0.28
+        },
+        {
+          "trial": 3,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.0011,
+            "decay": 0.009,
+            "dropout": 0.3,
+            "ordinal": 0.05,
+            "severe": 0.55,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.605662542224331,
+          "spinal": 0.5081233990029138,
+          "foraminal": 0.7165206668684205,
+          "subarticular": 0.7815722195613746,
+          "any_severe_spinal": 0.41643388346461546,
+          "seconds": 0.3
+        },
+        {
+          "trial": 4,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.015,
+            "dropout": 0.33,
+            "ordinal": 0.15,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6638701671755473,
+          "spinal": 0.5694387255411358,
+          "foraminal": 0.7592565371038643,
+          "subarticular": 0.8280837102029085,
+          "any_severe_spinal": 0.4987016958542803,
+          "seconds": 0.23
+        },
+        {
+          "trial": 5,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.595684778640275,
+          "spinal": 0.49692021105419676,
+          "foraminal": 0.7039321018981235,
+          "subarticular": 0.7746396743281443,
+          "any_severe_spinal": 0.4072471272806355,
+          "seconds": 0.3
+        },
+        {
+          "trial": 6,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 4,
+          "score": 0.6112410609959336,
+          "spinal": 0.5191548459630556,
+          "foraminal": 0.7066146778295801,
+          "subarticular": 0.7854917792225397,
+          "any_severe_spinal": 0.4337029409685591,
+          "seconds": 0.3
+        },
+        {
+          "trial": 7,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.00065,
+            "decay": 0.005,
+            "dropout": 0.28,
+            "ordinal": 0.12,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6178402698301113,
+          "spinal": 0.5258392666556141,
+          "foraminal": 0.7025742085493484,
+          "subarticular": 0.7886403815269741,
+          "any_severe_spinal": 0.45430722258850864,
+          "seconds": 0.28
+        },
+        {
+          "trial": 8,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0009,
+            "decay": 0.01,
+            "dropout": 0.35,
+            "ordinal": 0.15,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6630165174691542,
+          "spinal": 0.5615430135807766,
+          "foraminal": 0.7689981445057672,
+          "subarticular": 0.8391433217903345,
+          "any_severe_spinal": 0.4823815899997385,
+          "seconds": 0.28
+        },
+        {
+          "trial": 9,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6002140122020531,
+          "spinal": 0.5047763704052572,
+          "foraminal": 0.7092577884639422,
+          "subarticular": 0.7752070656138921,
+          "any_severe_spinal": 0.41161482432512086,
+          "seconds": 0.41
+        },
+        {
+          "trial": 10,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.0004,
+            "decay": 0.015,
+            "dropout": 0.5,
+            "ordinal": 0.3,
+            "severe": 1.2,
+            "class_power": 0.85
+          },
+          "epochs": 4,
+          "score": 0.6118561729216752,
+          "spinal": 0.5239714326280872,
+          "foraminal": 0.7146908927249738,
+          "subarticular": 0.7840842817960716,
+          "any_severe_spinal": 0.42467808453756833,
+          "seconds": 0.3
+        },
+        {
+          "trial": 11,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.5908108352453099,
+          "spinal": 0.5024565662879331,
+          "foraminal": 0.6996961442852371,
+          "subarticular": 0.7588596473364669,
+          "any_severe_spinal": 0.4022309830716021,
+          "seconds": 0.3
+        },
+        {
+          "trial": 11,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.5908108352453099,
+          "spinal": 0.5024565662879331,
+          "foraminal": 0.6996961442852371,
+          "subarticular": 0.7588596473364669,
+          "any_severe_spinal": 0.4022309830716021,
+          "seconds": 0.3
+        },
+        {
+          "trial": 5,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.595684778640275,
+          "spinal": 0.49692021105419676,
+          "foraminal": 0.7039321018981235,
+          "subarticular": 0.7746396743281443,
+          "any_severe_spinal": 0.4072471272806355,
+          "seconds": 0.3
+        },
+        {
+          "trial": 9,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 6,
+          "score": 0.5937431017749065,
+          "spinal": 0.5010691841600183,
+          "foraminal": 0.6953693092298388,
+          "subarticular": 0.7656784546229315,
+          "any_severe_spinal": 0.4128554590868374,
+          "seconds": 0.38
+        },
+        {
+          "trial": 3,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.0011,
+            "decay": 0.009,
+            "dropout": 0.3,
+            "ordinal": 0.05,
+            "severe": 0.55,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.605662542224331,
+          "spinal": 0.5081233990029138,
+          "foraminal": 0.7165206668684205,
+          "subarticular": 0.7815722195613746,
+          "any_severe_spinal": 0.41643388346461546,
+          "seconds": 0.3
+        },
+        {
+          "trial": 11,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.5908108352453099,
+          "spinal": 0.5024565662879331,
+          "foraminal": 0.6996961442852371,
+          "subarticular": 0.7588596473364669,
+          "any_severe_spinal": 0.4022309830716021,
+          "seconds": 0.3
+        },
+        {
+          "trial": 9,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 6,
+          "score": 0.5937431017749065,
+          "spinal": 0.5010691841600183,
+          "foraminal": 0.6953693092298388,
+          "subarticular": 0.7656784546229315,
+          "any_severe_spinal": 0.4128554590868374,
+          "seconds": 0.38
+        }
+      ]
+    },
+    {
+      "fold": 2,
+      "inner_val": 3,
+      "trial": 9,
+      "training_studies": 1582,
+      "validation_studies": 393,
+      "inner_training_count": 1189,
+      "inner_validation_count": 393,
+      "temperature": [
+        0.9662452596536578,
+        1.0762261867824734,
+        1.1177639745336077
+      ],
+      "recipe": {
+        "kind": "attention",
+        "descriptor": "hybrid",
+        "width": 128,
+        "lr": 0.0006,
+        "decay": 0.008,
+        "dropout": 0.35,
+        "ordinal": 0.2,
+        "severe": 0.8,
+        "class_power": 1.0
+      },
+      "fit_epochs": 6,
+      "outer": {
+        "score": 0.57181350396922,
+        "spinal": 0.4785391486381519,
+        "foraminal": 0.6735104057764468,
+        "subarticular": 0.7460485127271802,
+        "any_severe_spinal": 0.38915594873510123
+      },
+      "outer_calibrated": {
+        "score": 0.572450641647733,
+        "spinal": 0.48006975854468226,
+        "foraminal": 0.6747355459125012,
+        "subarticular": 0.7461730224379278,
+        "any_severe_spinal": 0.3888242396958204
+      },
+      "trials": [
+        {
+          "trial": 0,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "deep",
+            "width": 96,
+            "lr": 0.001,
+            "decay": 0.004,
+            "dropout": 0.18,
+            "ordinal": 0.0,
+            "severe": 0.6,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6297564337572432,
+          "spinal": 0.5028847732719822,
+          "foraminal": 0.7302563219640799,
+          "subarticular": 0.8339163145555443,
+          "any_severe_spinal": 0.45196832523736674,
+          "seconds": 0.22
+        },
+        {
+          "trial": 1,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.01,
+            "dropout": 0.25,
+            "ordinal": 0.12,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6575276105097724,
+          "spinal": 0.5378236778611708,
+          "foraminal": 0.7776525850575878,
+          "subarticular": 0.8360946920905132,
+          "any_severe_spinal": 0.4785394870298174,
+          "seconds": 0.25
+        },
+        {
+          "trial": 2,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.003,
+            "dropout": 0.3,
+            "ordinal": 0.17,
+            "severe": 1.0,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6269809439457024,
+          "spinal": 0.48388225546824615,
+          "foraminal": 0.7412555946732847,
+          "subarticular": 0.8394279840434133,
+          "any_severe_spinal": 0.44335794159786523,
+          "seconds": 0.28
+        },
+        {
+          "trial": 3,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.0011,
+            "decay": 0.009,
+            "dropout": 0.3,
+            "ordinal": 0.05,
+            "severe": 0.55,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6232899889248386,
+          "spinal": 0.5072972039447174,
+          "foraminal": 0.7442954318644146,
+          "subarticular": 0.820161244348047,
+          "any_severe_spinal": 0.42140607554217474,
+          "seconds": 0.3
+        },
+        {
+          "trial": 4,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.015,
+            "dropout": 0.33,
+            "ordinal": 0.15,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6540060451471965,
+          "spinal": 0.5305397261478939,
+          "foraminal": 0.7667116711321756,
+          "subarticular": 0.8386723917424839,
+          "any_severe_spinal": 0.48010039156623274,
+          "seconds": 0.27
+        },
+        {
+          "trial": 5,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6006824433837905,
+          "spinal": 0.47335093470158673,
+          "foraminal": 0.7155340895200326,
+          "subarticular": 0.819132644649303,
+          "any_severe_spinal": 0.39471210466423945,
+          "seconds": 0.25
+        },
+        {
+          "trial": 6,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 4,
+          "score": 0.596590336300133,
+          "spinal": 0.46772640649715075,
+          "foraminal": 0.7235698875530604,
+          "subarticular": 0.8101068399402593,
+          "any_severe_spinal": 0.38495821121006135,
+          "seconds": 0.27
+        },
+        {
+          "trial": 7,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.00065,
+            "decay": 0.005,
+            "dropout": 0.28,
+            "ordinal": 0.12,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6187517849953682,
+          "spinal": 0.49533074825139234,
+          "foraminal": 0.7246937776248152,
+          "subarticular": 0.8279929808841232,
+          "any_severe_spinal": 0.42698963322114214,
+          "seconds": 0.31
+        },
+        {
+          "trial": 8,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0009,
+            "decay": 0.01,
+            "dropout": 0.35,
+            "ordinal": 0.15,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6657667179576922,
+          "spinal": 0.5423512460727092,
+          "foraminal": 0.795881676261532,
+          "subarticular": 0.8358455646390122,
+          "any_severe_spinal": 0.4889883848575153,
+          "seconds": 0.33
+        },
+        {
+          "trial": 9,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6045175297950417,
+          "spinal": 0.4809039172382703,
+          "foraminal": 0.7417028492273373,
+          "subarticular": 0.8114533929149013,
+          "any_severe_spinal": 0.3840099597996579,
+          "seconds": 0.34
+        },
+        {
+          "trial": 10,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.0004,
+            "decay": 0.015,
+            "dropout": 0.5,
+            "ordinal": 0.3,
+            "severe": 1.2,
+            "class_power": 0.85
+          },
+          "epochs": 5,
+          "score": 0.6291713589963761,
+          "spinal": 0.49471370911779233,
+          "foraminal": 0.7319119291930474,
+          "subarticular": 0.8301043130601912,
+          "any_severe_spinal": 0.4599554846144737,
+          "seconds": 0.36
+        },
+        {
+          "trial": 11,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6037849367978393,
+          "spinal": 0.47251694561378804,
+          "foraminal": 0.709607268205433,
+          "subarticular": 0.8089906539536723,
+          "any_severe_spinal": 0.4240248794184639,
+          "seconds": 0.36
+        },
+        {
+          "trial": 6,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 4,
+          "score": 0.596590336300133,
+          "spinal": 0.46772640649715075,
+          "foraminal": 0.7235698875530604,
+          "subarticular": 0.8101068399402593,
+          "any_severe_spinal": 0.38495821121006135,
+          "seconds": 0.27
+        },
+        {
+          "trial": 5,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6006824433837905,
+          "spinal": 0.47335093470158673,
+          "foraminal": 0.7155340895200326,
+          "subarticular": 0.819132644649303,
+          "any_severe_spinal": 0.39471210466423945,
+          "seconds": 0.25
+        },
+        {
+          "trial": 11,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6037849367978393,
+          "spinal": 0.47251694561378804,
+          "foraminal": 0.709607268205433,
+          "subarticular": 0.8089906539536723,
+          "any_severe_spinal": 0.4240248794184639,
+          "seconds": 0.36
+        },
+        {
+          "trial": 9,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 6,
+          "score": 0.5928648370936985,
+          "spinal": 0.4653785438636828,
+          "foraminal": 0.7167088645888351,
+          "subarticular": 0.7978071941183846,
+          "any_severe_spinal": 0.3915647458038916,
+          "seconds": 0.33
+        },
+        {
+          "trial": 9,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 6,
+          "score": 0.5928648370936985,
+          "spinal": 0.4653785438636828,
+          "foraminal": 0.7167088645888351,
+          "subarticular": 0.7978071941183846,
+          "any_severe_spinal": 0.3915647458038916,
+          "seconds": 0.33
+        },
+        {
+          "trial": 6,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 4,
+          "score": 0.596590336300133,
+          "spinal": 0.46772640649715075,
+          "foraminal": 0.7235698875530604,
+          "subarticular": 0.8101068399402593,
+          "any_severe_spinal": 0.38495821121006135,
+          "seconds": 0.27
+        }
+      ]
+    },
+    {
+      "fold": 3,
+      "inner_val": 4,
+      "trial": 5,
+      "training_studies": 1582,
+      "validation_studies": 393,
+      "inner_training_count": 1187,
+      "inner_validation_count": 395,
+      "temperature": [
+        1.190824747158681,
+        1.0949506978629433,
+        1.133776344830232
+      ],
+      "recipe": {
+        "kind": "conv",
+        "descriptor": "hybrid",
+        "width": 128,
+        "lr": 0.0007,
+        "decay": 0.006,
+        "dropout": 0.33,
+        "ordinal": 0.14,
+        "severe": 0.65,
+        "class_power": 1.0
+      },
+      "fit_epochs": 7,
+      "outer": {
+        "score": 0.6744458381363346,
+        "spinal": 0.5571470896005026,
+        "foraminal": 0.7211449516016296,
+        "subarticular": 0.8340387173344019,
+        "any_severe_spinal": 0.5854525940088046
+      },
+      "outer_calibrated": {
+        "score": 0.6556427331959054,
+        "spinal": 0.5307594115106564,
+        "foraminal": 0.7128293394195997,
+        "subarticular": 0.8201130401871679,
+        "any_severe_spinal": 0.5588691416661977
+      },
+      "trials": [
+        {
+          "trial": 0,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "deep",
+            "width": 96,
+            "lr": 0.001,
+            "decay": 0.004,
+            "dropout": 0.18,
+            "ordinal": 0.0,
+            "severe": 0.6,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6370263753318764,
+          "spinal": 0.4950932408421015,
+          "foraminal": 0.7555915540699873,
+          "subarticular": 0.8105114847529394,
+          "any_severe_spinal": 0.4869092216624776,
+          "seconds": 0.23
+        },
+        {
+          "trial": 1,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.01,
+            "dropout": 0.25,
+            "ordinal": 0.12,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6533155712687049,
+          "spinal": 0.5267016415900759,
+          "foraminal": 0.7919478184471408,
+          "subarticular": 0.8038937766721188,
+          "any_severe_spinal": 0.4907190483654839,
+          "seconds": 0.22
+        },
+        {
+          "trial": 2,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.003,
+            "dropout": 0.3,
+            "ordinal": 0.17,
+            "severe": 1.0,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6176282365666371,
+          "spinal": 0.46284702624954854,
+          "foraminal": 0.7605180030521518,
+          "subarticular": 0.7853269273604652,
+          "any_severe_spinal": 0.46182098960438295,
+          "seconds": 0.28
+        },
+        {
+          "trial": 3,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.0011,
+            "decay": 0.009,
+            "dropout": 0.3,
+            "ordinal": 0.05,
+            "severe": 0.55,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6234261134345177,
+          "spinal": 0.47977020101153556,
+          "foraminal": 0.7494756021140623,
+          "subarticular": 0.7893350188975871,
+          "any_severe_spinal": 0.4751236317148862,
+          "seconds": 0.25
+        },
+        {
+          "trial": 4,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.015,
+            "dropout": 0.33,
+            "ordinal": 0.15,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6642351769756623,
+          "spinal": 0.5512392902195049,
+          "foraminal": 0.7813078838478924,
+          "subarticular": 0.8284528429356008,
+          "any_severe_spinal": 0.49594069089965076,
+          "seconds": 0.25
+        },
+        {
+          "trial": 5,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6035411810566995,
+          "spinal": 0.4685482937813754,
+          "foraminal": 0.725107566378219,
+          "subarticular": 0.7768157672019999,
+          "any_severe_spinal": 0.4436930968652039,
+          "seconds": 0.28
+        },
+        {
+          "trial": 6,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 4,
+          "score": 0.6163069011535418,
+          "spinal": 0.4827970745314668,
+          "foraminal": 0.7543296693059368,
+          "subarticular": 0.7848086583418384,
+          "any_severe_spinal": 0.44329220243492545,
+          "seconds": 0.33
+        },
+        {
+          "trial": 7,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.00065,
+            "decay": 0.005,
+            "dropout": 0.28,
+            "ordinal": 0.12,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6452205539422178,
+          "spinal": 0.524806141237041,
+          "foraminal": 0.7565720246685521,
+          "subarticular": 0.8114066145306673,
+          "any_severe_spinal": 0.48809743533261085,
+          "seconds": 0.34
+        },
+        {
+          "trial": 8,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0009,
+            "decay": 0.01,
+            "dropout": 0.35,
+            "ordinal": 0.15,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6648210814126047,
+          "spinal": 0.5417608310554817,
+          "foraminal": 0.8121899173881598,
+          "subarticular": 0.8152376776029473,
+          "any_severe_spinal": 0.49009589960383,
+          "seconds": 0.27
+        },
+        {
+          "trial": 9,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6193879977687424,
+          "spinal": 0.477624157060789,
+          "foraminal": 0.751667227089896,
+          "subarticular": 0.7814625052639228,
+          "any_severe_spinal": 0.46679810166036195,
+          "seconds": 0.31
+        },
+        {
+          "trial": 10,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.0004,
+            "decay": 0.015,
+            "dropout": 0.5,
+            "ordinal": 0.3,
+            "severe": 1.2,
+            "class_power": 0.85
+          },
+          "epochs": 4,
+          "score": 0.6264418082426089,
+          "spinal": 0.4943296233193209,
+          "foraminal": 0.7602830129328837,
+          "subarticular": 0.7910210204662131,
+          "any_severe_spinal": 0.4601335762520178,
+          "seconds": 0.27
+        },
+        {
+          "trial": 11,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 4,
+          "score": 0.6135669973933989,
+          "spinal": 0.49222487195928055,
+          "foraminal": 0.7371687574893683,
+          "subarticular": 0.7660517540697049,
+          "any_severe_spinal": 0.4588226060552421,
+          "seconds": 0.31
+        },
+        {
+          "trial": 5,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 7,
+          "score": 0.600206101455685,
+          "spinal": 0.4721456447525158,
+          "foraminal": 0.7042086362638394,
+          "subarticular": 0.7791519424593997,
+          "any_severe_spinal": 0.4453181823469849,
+          "seconds": 0.28
+        },
+        {
+          "trial": 11,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 7,
+          "score": 0.613076235800445,
+          "spinal": 0.46815982683997853,
+          "foraminal": 0.7145895262639129,
+          "subarticular": 0.7576940920274574,
+          "any_severe_spinal": 0.5118614980704312,
+          "seconds": 0.33
+        },
+        {
+          "trial": 6,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 6,
+          "score": 0.6129651320761134,
+          "spinal": 0.4647588655705102,
+          "foraminal": 0.7330096933122497,
+          "subarticular": 0.7911911726936885,
+          "any_severe_spinal": 0.46290079672800455,
+          "seconds": 0.3
+        },
+        {
+          "trial": 2,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.003,
+            "dropout": 0.3,
+            "ordinal": 0.17,
+            "severe": 1.0,
+            "class_power": 1.0
+          },
+          "epochs": 6,
+          "score": 0.617142421560942,
+          "spinal": 0.46620066052790904,
+          "foraminal": 0.7457312241041844,
+          "subarticular": 0.7836511040632353,
+          "any_severe_spinal": 0.472986697548439,
+          "seconds": 0.24
+        },
+        {
+          "trial": 5,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 7,
+          "score": 0.600206101455685,
+          "spinal": 0.4721456447525158,
+          "foraminal": 0.7042086362638394,
+          "subarticular": 0.7791519424593997,
+          "any_severe_spinal": 0.4453181823469849,
+          "seconds": 0.28
+        },
+        {
+          "trial": 6,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 6,
+          "score": 0.6129651320761134,
+          "spinal": 0.4647588655705102,
+          "foraminal": 0.7330096933122497,
+          "subarticular": 0.7911911726936885,
+          "any_severe_spinal": 0.46290079672800455,
+          "seconds": 0.3
+        }
+      ]
+    },
+    {
+      "fold": 4,
+      "inner_val": 0,
+      "trial": 11,
+      "training_studies": 1580,
+      "validation_studies": 395,
+      "inner_training_count": 1187,
+      "inner_validation_count": 393,
+      "temperature": [
+        1.2219740123922112,
+        1.2820409949172975,
+        1.199857755851831
+      ],
+      "recipe": {
+        "kind": "attention",
+        "descriptor": "hybrid",
+        "width": 96,
+        "lr": 0.0011,
+        "decay": 0.012,
+        "dropout": 0.4,
+        "ordinal": 0.12,
+        "severe": 0.4,
+        "class_power": 1.0
+      },
+      "fit_epochs": 8,
+      "outer": {
+        "score": 0.6074274932318267,
+        "spinal": 0.46070801720954646,
+        "foraminal": 0.7101875826780126,
+        "subarticular": 0.734415338659037,
+        "any_severe_spinal": 0.5243990343807103
+      },
+      "outer_calibrated": {
+        "score": 0.5958754224919582,
+        "spinal": 0.45221957486223757,
+        "foraminal": 0.699826379444616,
+        "subarticular": 0.7306849180756678,
+        "any_severe_spinal": 0.5007708175853115
+      },
+      "trials": [
+        {
+          "trial": 0,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "deep",
+            "width": 96,
+            "lr": 0.001,
+            "decay": 0.004,
+            "dropout": 0.18,
+            "ordinal": 0.0,
+            "severe": 0.6,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6372300811598842,
+          "spinal": 0.4975181927473133,
+          "foraminal": 0.7729590979889741,
+          "subarticular": 0.8201685268074318,
+          "any_severe_spinal": 0.45827450709581763,
+          "seconds": 0.25
+        },
+        {
+          "trial": 1,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.01,
+            "dropout": 0.25,
+            "ordinal": 0.12,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.7071970970997362,
+          "spinal": 0.5748767899842816,
+          "foraminal": 0.8241377254199489,
+          "subarticular": 0.8709493144173501,
+          "any_severe_spinal": 0.5588245585773638,
+          "seconds": 0.27
+        },
+        {
+          "trial": 2,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "local",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.003,
+            "dropout": 0.3,
+            "ordinal": 0.17,
+            "severe": 1.0,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6301485881799787,
+          "spinal": 0.48586014639258696,
+          "foraminal": 0.7832576696975947,
+          "subarticular": 0.8140656423513692,
+          "any_severe_spinal": 0.4374108942783636,
+          "seconds": 0.28
+        },
+        {
+          "trial": 3,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.0011,
+            "decay": 0.009,
+            "dropout": 0.3,
+            "ordinal": 0.05,
+            "severe": 0.55,
+            "class_power": 1.0
+          },
+          "epochs": 3,
+          "score": 0.6283224110588312,
+          "spinal": 0.4843941142676404,
+          "foraminal": 0.7741150402816604,
+          "subarticular": 0.8029948608757844,
+          "any_severe_spinal": 0.4517856288102394,
+          "seconds": 0.25
+        },
+        {
+          "trial": 4,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0015,
+            "decay": 0.015,
+            "dropout": 0.33,
+            "ordinal": 0.15,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6987314680887449,
+          "spinal": 0.5726626528681726,
+          "foraminal": 0.8078030768809872,
+          "subarticular": 0.8673300511901791,
+          "any_severe_spinal": 0.5471300914156405,
+          "seconds": 0.27
+        },
+        {
+          "trial": 5,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6149345031459741,
+          "spinal": 0.4703760939758031,
+          "foraminal": 0.7563361847753183,
+          "subarticular": 0.7992635534426338,
+          "any_severe_spinal": 0.43376218039014103,
+          "seconds": 0.27
+        },
+        {
+          "trial": 6,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.00055,
+            "decay": 0.02,
+            "dropout": 0.48,
+            "ordinal": 0.25,
+            "severe": 1.1,
+            "class_power": 1.15
+          },
+          "epochs": 5,
+          "score": 0.6262143163828757,
+          "spinal": 0.4809615527430703,
+          "foraminal": 0.7651583318267696,
+          "subarticular": 0.8036852379575877,
+          "any_severe_spinal": 0.4550521430040754,
+          "seconds": 0.27
+        },
+        {
+          "trial": 7,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "deep",
+            "width": 128,
+            "lr": 0.00065,
+            "decay": 0.005,
+            "dropout": 0.28,
+            "ordinal": 0.12,
+            "severe": 0.85,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6312980341022196,
+          "spinal": 0.49135529942781003,
+          "foraminal": 0.7794388197349071,
+          "subarticular": 0.8096024258603507,
+          "any_severe_spinal": 0.44479559138581043,
+          "seconds": 0.25
+        },
+        {
+          "trial": 8,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "texture",
+            "width": 96,
+            "lr": 0.0009,
+            "decay": 0.01,
+            "dropout": 0.35,
+            "ordinal": 0.15,
+            "severe": 0.7,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6947381975747879,
+          "spinal": 0.5645644171063339,
+          "foraminal": 0.8188163823128681,
+          "subarticular": 0.8533027395025872,
+          "any_severe_spinal": 0.5422692513773627,
+          "seconds": 0.31
+        },
+        {
+          "trial": 9,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6202352776067743,
+          "spinal": 0.47302718825541684,
+          "foraminal": 0.7682728941307199,
+          "subarticular": 0.8123648488584644,
+          "any_severe_spinal": 0.42727617918249644,
+          "seconds": 0.36
+        },
+        {
+          "trial": 10,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.0004,
+            "decay": 0.015,
+            "dropout": 0.5,
+            "ordinal": 0.3,
+            "severe": 1.2,
+            "class_power": 0.85
+          },
+          "epochs": 5,
+          "score": 0.6257595259653425,
+          "spinal": 0.4798156529536785,
+          "foraminal": 0.7849846530727242,
+          "subarticular": 0.811700164857138,
+          "any_severe_spinal": 0.4265376329778291,
+          "seconds": 0.33
+        },
+        {
+          "trial": 11,
+          "rung": 1,
+          "budget": 5,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6161158936190918,
+          "spinal": 0.478169307412156,
+          "foraminal": 0.7491590256318167,
+          "subarticular": 0.7823500765982786,
+          "any_severe_spinal": 0.4547851648341157,
+          "seconds": 0.34
+        },
+        {
+          "trial": 5,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6149345031459741,
+          "spinal": 0.4703760939758031,
+          "foraminal": 0.7563361847753183,
+          "subarticular": 0.7992635534426338,
+          "any_severe_spinal": 0.43376218039014103,
+          "seconds": 0.27
+        },
+        {
+          "trial": 11,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 8,
+          "score": 0.612889558933235,
+          "spinal": 0.47453614190525323,
+          "foraminal": 0.7495372504523219,
+          "subarticular": 0.7748960271157171,
+          "any_severe_spinal": 0.4525888162596477,
+          "seconds": 0.28
+        },
+        {
+          "trial": 9,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0006,
+            "decay": 0.008,
+            "dropout": 0.35,
+            "ordinal": 0.2,
+            "severe": 0.8,
+            "class_power": 1.0
+          },
+          "epochs": 7,
+          "score": 0.6172317979535965,
+          "spinal": 0.4781787888437624,
+          "foraminal": 0.7437327154450892,
+          "subarticular": 0.7884440530843694,
+          "any_severe_spinal": 0.45857163444116483,
+          "seconds": 0.27
+        },
+        {
+          "trial": 10,
+          "rung": 2,
+          "budget": 12,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 192,
+            "lr": 0.0004,
+            "decay": 0.015,
+            "dropout": 0.5,
+            "ordinal": 0.3,
+            "severe": 1.2,
+            "class_power": 0.85
+          },
+          "epochs": 5,
+          "score": 0.6257595259653425,
+          "spinal": 0.4798156529536785,
+          "foraminal": 0.7849846530727242,
+          "subarticular": 0.811700164857138,
+          "any_severe_spinal": 0.4265376329778291,
+          "seconds": 0.33
+        },
+        {
+          "trial": 11,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "attention",
+            "descriptor": "hybrid",
+            "width": 96,
+            "lr": 0.0011,
+            "decay": 0.012,
+            "dropout": 0.4,
+            "ordinal": 0.12,
+            "severe": 0.4,
+            "class_power": 1.0
+          },
+          "epochs": 8,
+          "score": 0.612889558933235,
+          "spinal": 0.47453614190525323,
+          "foraminal": 0.7495372504523219,
+          "subarticular": 0.7748960271157171,
+          "any_severe_spinal": 0.4525888162596477,
+          "seconds": 0.28
+        },
+        {
+          "trial": 5,
+          "rung": 3,
+          "budget": 24,
+          "recipe": {
+            "kind": "conv",
+            "descriptor": "hybrid",
+            "width": 128,
+            "lr": 0.0007,
+            "decay": 0.006,
+            "dropout": 0.33,
+            "ordinal": 0.14,
+            "severe": 0.65,
+            "class_power": 1.0
+          },
+          "epochs": 5,
+          "score": 0.6149345031459741,
+          "spinal": 0.4703760939758031,
+          "foraminal": 0.7563361847753183,
+          "subarticular": 0.7992635534426338,
+          "any_severe_spinal": 0.43376218039014103,
+          "seconds": 0.27
+        }
+      ]
+    }
+  ],
+  "initial_trials": 60,
+  "budgets": [
+    5,
+    12,
+    24
+  ],
+  "fold_sha256": "53bb0c78610f4071f73bd0ea761de0bd334012acf2e2850beecc92d7443316cf",
+  "pretrained_sha256": "80c49dee3da4822c009c5a7fe591e9223c5a2cfcf95a4067ca4dfb5a7b89c612",
+  "test_role": "sample for schema and execution only; no public grades in local test",
+  "localization": {
+    "study_count": 1975,
+    "median_anchor_error_mm": 7.323495864868164,
+    "atlas_only_median_anchor_error_mm": 16.19407844543457,
+    "mean_anchor_error_mm": 9.353187561035156,
+    "within_10mm": 0.6764072593048293,
+    "per_level_median_mm": [
+      8.182896614074707,
+      7.429241180419922,
+      6.977762222290039,
+      6.878139495849609,
+      7.368304252624512
+    ],
+    "median_3d_error_by_condition_mm": [
+      8.068246841430664,
+      8.882974624633789,
+      8.930349349975586,
+      8.49667739868164,
+      8.51858901977539
+    ],
+    "missing_primary_roi_fraction": 0.0005063291139240507,
+    "config": {
+      "folds_file_sha256": "53bb0c78610f4071f73bd0ea761de0bd334012acf2e2850beecc92d7443316cf",
+      "cache_sha256": "1bf5e806a0d79e642d1768c833225488ad55470d1a04658dabe9e72f13ce283c",
+      "code_sha256": "7647251dc615859208cf824d5cba6aed3517fbd4323762778d799be951475318",
+      "study_count": 1975
+    },
+    "nested_fit_count": 15,
+    "keypoint_fallback_fraction": 0.0
+  }
+}
