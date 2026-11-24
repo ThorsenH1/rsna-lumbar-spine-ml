@@ -2,9 +2,9 @@
 
 DICOM geometry, nested landmark localization, and severity grading at five lumbar levels.
 
-**0.5260 weighted log loss** over five held-out folds, down from 0.5307.
+**0.8534 macro AUROC** and **0.5260 weighted log loss** over five held-out folds. The AUROC interval is 0.8472–0.8599.
 
-Selected configuration `incumbent+raw-0.15`. See the [experiment report](REPORT.md), [search trajectories](figures/search.png), [aggregate metrics](metrics.json), and [synthetic prediction example](examples/README.md).
+Selected configuration `incumbent+raw-0.15`. See the [discrimination audit](DISCRIMINATION.md), [experiment report](REPORT.md), [search trajectories](figures/search.png), [aggregate metrics](metrics.json), and [synthetic prediction example](examples/README.md).
 
 ![Benchmark figure for RSNA Lumbar Spine MRI Grading](figures/benchmark.png)
 

@@ -2,6 +2,8 @@
 
 The selected configuration is `incumbent+raw-0.15`.
 
+The [discrimination audit](DISCRIMINATION.md) reports 0.8534 macro AUROC and explains the validation protocol, uncertainty, and severity differences.
+
 ## Out-of-fold comparison
 
 | Model | Overall | Spinal | Foraminal | Subarticular | Any severe spinal | Folds improved | Paired delta CI |
