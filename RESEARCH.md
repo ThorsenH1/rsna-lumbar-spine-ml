@@ -102,6 +102,20 @@ The side passages are small. I tested a fixed second crop with **80% of the orig
 
 The paired AUROC gain was **+0.00134**, with a 95% study-bootstrap interval of **+0.00082 to +0.00188**. The new AUROC interval is **0.8756–0.8845**. The comparison uses the established outer folds. For the local unlabeled test study, the pipeline verifies the DICOM-to-submission workflow. [See the two actual crops and the final synthetic prediction](WHERE-THE-MODEL-LOOKS.md)
 
+## Compare ranking and log loss after adjusting grade weights
+
+During training, the spatial grader weighs normal or mild, moderate, and severe grades at **1, 2, and 4**. I tested a fixed adjustment for the 20 side targets. Divide the spatial grader's three probabilities by the square roots of those training weights, normalize them to sum to one, and then average them with the reference probabilities. The adjustment uses fixed constants and the already computed predictions. The audit uses the same 1,975 held-out studies.
+
+| Metric | Narrower side crops | With partial grade weight adjustment |
+| --- | ---: | ---: |
+| Macro AUROC | 0.8803 | **0.8809** |
+| Macro average precision | 0.6009 | **0.6033** |
+| Moderate AUROC | 0.8223 | **0.8263** |
+| Severe AUROC | **0.9287** | 0.9270 |
+| Weighted log loss | **0.4836** | 0.4877 |
+
+The paired AUROC gain was **+0.00064**, with a 95% study-bootstrap interval of **+0.00033 to +0.00096**. The adjusted model's AUROC interval is **0.8762–0.8854**. It ranks the moderate cases better on these folds. The original narrower-crop model remains the best measured choice for the competition's weighted log loss. Both configurations can be reproduced with the same trained graders and deployment command.
+
 ## Reproduce the five-fold comparison
 
 Run the [original training workflow](README.md#reproduce-the-experiment) to generate the reference fold checkpoints and prior selection. The following steps reproduce the new spatial-detail experiment. The five outer-fold classifiers use a fixed schedule and are scored after training.
@@ -114,7 +128,8 @@ $graders = 'search-artifacts/spatial-detail-runs'
 $analysis = 'search-artifacts/spatial-detail-assessment'
 $laterality = "$analysis/laterality"
 $zoom = "$analysis/lateral-zoom"
-$plan = "$zoom/deployment.json"
+$gradeWeights = "$analysis/lateral-grade-weights.json"
+$plan = "$zoom/deployment-auroc.json"
 $cache = 'artifacts/cache/spine-train'
 $folds = 'artifacts/spine/folds.csv'
 $localizer = 'artifacts/spine/localization'
@@ -135,10 +150,15 @@ foreach ($fold in 0..4) {
 & $p -m medimage.spine_lateral_zoom --root $data --cache $cache --folds $folds --regions $learned `
     --runs $graders --reference "$reference/selected-oof.csv" --comparison $analysis --laterality $laterality `
     --output $zoom --batch 3 --bootstrap 1000
+& $p -m medimage.spine_weight_audit --root $data --cache $cache --folds $folds `
+    --reference "$reference/selected-oof.csv" --zoom $zoom --output $gradeWeights --bootstrap 1000
 & $p -m medimage.spine_detail_infer lock --train-cache $cache --folds $folds `
     --learned $learned --reference $localizer --runs $graders --comparison "$analysis/metrics.json" `
-    --reference-selection "$reference/selection.json" --laterality-report $laterality --zoom-report $zoom --output $plan
+    --reference-selection "$reference/selection.json" --laterality-report $laterality --zoom-report $zoom `
+    --grade-weight-report $gradeWeights --output $plan
 ```
+
+For the lower-log-loss model, use a separate output path for the deployment plan and omit `--grade-weight-report` from the lock command.
 
 To repeat the ordinal-head experiment, use the nested feature bank from the [earlier discrimination workflow](DISCRIMINATION.md).
 

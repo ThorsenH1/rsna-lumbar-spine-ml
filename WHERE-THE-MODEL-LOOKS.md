@@ -12,7 +12,7 @@ The overlay shows the regions supplied to the grading model. The trace records h
 
 ![The original and tighter crop for the left subarticular region at L4–L5, alongside the final score](examples/lateral-zoom.png)
 
-The boxes outline the regular crop in gold and the 20% narrower crop in turquoise. The target is narrowing in the left passage where a nerve root travels. The two crops use the same center and output size. In this synthetic study, the localizer placed the center near the upper edge, so both crops include black padding. The ensemble still assigns **0.54** to normal or mild. Look at the crop placement before interpreting that score. The synthetic study has no clinical grade.
+The boxes outline the regular crop in gold and the 20% narrower crop in turquoise. The target is narrowing in the left passage where a nerve root travels. The two crops use the same center and output size. In this synthetic study, the localizer placed the center near the upper edge, so both crops include black padding. The adjusted ensemble still assigns **0.59** to normal or mild. Look at the crop placement before interpreting that score. The synthetic study has no clinical grade.
 
 ```powershell
 & $p -m medimage.spine_region_explain --cache "$example/cache" `

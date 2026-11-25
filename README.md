@@ -2,9 +2,9 @@
 
 DICOM geometry, nested landmark localization, and severity grading at five lumbar levels.
 
-**0.8803 macro AUROC** and **0.4836 weighted log loss** over five held-out folds. The 95% study-bootstrap AUROC interval is 0.8756–0.8845.
+**0.8809 macro AUROC** over five held-out folds, with a 95% study-bootstrap interval of 0.8762–0.8854. The same model has **0.4877 weighted log loss**. The best measured weighted log loss is **0.4836** from the narrower-crop model used before the grade weight adjustment.
 
-The selected model blends the previous ensemble with a spatial-detail grader. The grader reads a regular view and a tighter view of each side region, and uses reflection when the DICOM orientation supports it. See the [full research comparison](RESEARCH.md), [earlier discrimination audit](DISCRIMINATION.md), [search trajectories](figures/search.png), and [synthetic prediction example](examples/README.md).
+The AUROC-selected model blends the previous ensemble with a spatial-detail grader. The grader reads a regular view and a tighter view of each side region and uses reflection when DICOM orientation supports it. It partially compensates for the severity weights used during training. See the [full research comparison](RESEARCH.md), [earlier discrimination audit](DISCRIMINATION.md), [search trajectories](figures/search.png), and [synthetic prediction example](examples/README.md).
 
 ## Start with one prediction
 

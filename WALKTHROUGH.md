@@ -22,7 +22,14 @@ A residual image encoder describes the crops. The spatial-detail branch preserve
 | Average of five original-and-reflected spatial-detail models | 0.7979 | 0.1017 | 0.1003 |
 | Final blend | **0.6365** | **0.1673** | **0.1962** |
 
-The final blend uses **50%** of the previous ensemble and **50%** of the new models. Each of the 25 rows has three probabilities summing to one. The input is generated for this demonstration. [Full example JSON](examples/spatial-detail-prediction.json)
+The final blend uses **50%** of the previous ensemble and **50%** of the new models. For side targets, it partially compensates for the spatial grader's training weights before the final average. Each of the 25 rows has three probabilities summing to one. The input is generated for this demonstration. [Full example JSON](examples/spatial-detail-prediction.json)
+
+The same example shows how adjusting the weights changes the scores for the left subarticular region at L4–L5.
+
+| Left side at L4–L5 | Normal or mild | Moderate | Severe |
+| --- | ---: | ---: | ---: |
+| Narrower crops | 0.539 | 0.297 | 0.164 |
+| Narrower crops and grade weight adjustment | **0.587** | **0.277** | **0.135** |
 
 ## 4. Generate the study and rerun the selected model
 
@@ -53,4 +60,4 @@ Find the L4–L5 spinal canal row in the CSV and check that the three columns su
 | A confident model confuses the moderate grade with its neighbors | Show AUROC for each grade and report a probability-sensitive log loss |
 | The local test has no reference grades | Score the model on five held-out study folds and check file generation on the local test |
 
-The reported model reached **0.8803 macro AUROC** on the held-out predictions for 1,975 studies. It averages 75 comparisons across findings, levels and grades. The competition metric is **0.4836 weighted log loss** in the same folds. The local test study verifies that the system produces 25 rows. [Full research report](RESEARCH.md)
+The reported model reached **0.8809 macro AUROC** on the held-out predictions for 1,975 studies. It averages 75 comparisons across findings, levels and grades. Its weighted log loss is **0.4877** on these folds. The narrower-crop model before grade weight adjustment reached the lower log loss of **0.4836**. The local test study checks the 25-row output format. [Full research report](RESEARCH.md)
