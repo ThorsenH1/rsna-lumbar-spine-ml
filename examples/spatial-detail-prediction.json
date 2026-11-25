@@ -1,158 +1,158 @@
 {
   "input": "generated MRI study",
-  "model": "equal blend of reference and spatial-detail graders",
-  "manifest_sha256": "2525ce1ffb25ebcf200871868948803c1b3c65a8a5ce755c1391c388e038f8e6",
+  "model": "equal blend of reference and original-and-reflected spatial-detail graders",
+  "selection_sha256": "e7c938c7a12434c0573236dd17b3b40d6fcc9d8fad210131c83de17f5316717b",
   "rows": 25,
   "predictions": [
     {
       "row_id": "999000_spinal_canal_stenosis_l1_l2",
-      "normal_mild": 0.7258139205724001,
-      "moderate": 0.1610306755872442,
-      "severe": 0.1131554016078007
+      "normal_mild": 0.7336108771711588,
+      "moderate": 0.15685494670178732,
+      "severe": 0.10953418767807306
     },
     {
       "row_id": "999000_spinal_canal_stenosis_l2_l3",
-      "normal_mild": 0.616336258649826,
-      "moderate": 0.2697358936537056,
-      "severe": 0.1139278346388891
+      "normal_mild": 0.6168824025988577,
+      "moderate": 0.27147118770517403,
+      "severe": 0.11164639116977917
     },
     {
       "row_id": "999000_spinal_canal_stenosis_l3_l4",
-      "normal_mild": 0.5937530830129981,
-      "moderate": 0.295887401853688,
-      "severe": 0.1103595139147363
+      "normal_mild": 0.5973361894115805,
+      "moderate": 0.295426961374469,
+      "severe": 0.1072368492468376
     },
     {
       "row_id": "999000_spinal_canal_stenosis_l4_l5",
-      "normal_mild": 0.637366046742536,
-      "moderate": 0.1631050835782661,
-      "severe": 0.199528882142913
+      "normal_mild": 0.6365379340806976,
+      "moderate": 0.16728344200644638,
+      "severe": 0.19617863602150465
     },
     {
       "row_id": "999000_spinal_canal_stenosis_l5_s1",
-      "normal_mild": 0.7663828169181943,
-      "moderate": 0.1251782108703627,
-      "severe": 0.1084389918697706
+      "normal_mild": 0.7669144426658749,
+      "moderate": 0.12473069114144884,
+      "severe": 0.1083548851059458
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l1_l2",
-      "normal_mild": 0.7626590235158801,
-      "moderate": 0.1817018000804818,
-      "severe": 0.0556391868602076
+      "normal_mild": 0.768690632097423,
+      "moderate": 0.17500292639480897,
+      "severe": 0.05630644198317889
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l2_l3",
-      "normal_mild": 0.67664446817711,
-      "moderate": 0.2556156281847506,
-      "severe": 0.0677399010919907
+      "normal_mild": 0.6829197524674238,
+      "moderate": 0.24906434356234966,
+      "severe": 0.06801591081442887
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l3_l4",
-      "normal_mild": 0.6231278926879167,
-      "moderate": 0.3039713782817125,
-      "severe": 0.0729007359256501
+      "normal_mild": 0.6368961871415376,
+      "moderate": 0.2912272126972675,
+      "severe": 0.07187661370378914
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l4_l5",
-      "normal_mild": 0.5894769817963242,
-      "moderate": 0.281342972163111,
-      "severe": 0.1291800607403274
+      "normal_mild": 0.5951911628618836,
+      "moderate": 0.2748434887267649,
+      "severe": 0.12996535978163587
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l5_s1",
-      "normal_mild": 0.5850461043789983,
-      "moderate": 0.2743809930793941,
-      "severe": 0.140572910021292
+      "normal_mild": 0.5941622771695256,
+      "moderate": 0.2657614372484386,
+      "severe": 0.14007628019200635
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l1_l2",
-      "normal_mild": 0.7880356547236442,
-      "moderate": 0.1438566500111482,
-      "severe": 0.068107681654219
+      "normal_mild": 0.7884525176882744,
+      "moderate": 0.14526960312156,
+      "severe": 0.06627786985889539
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l2_l3",
-      "normal_mild": 0.7067081939429045,
-      "moderate": 0.231830821475014,
-      "severe": 0.0614609905460383
+      "normal_mild": 0.6999792288988829,
+      "moderate": 0.23935319372452796,
+      "severe": 0.06066758138476866
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l3_l4",
-      "normal_mild": 0.6706726242229343,
-      "moderate": 0.2420551943406462,
-      "severe": 0.0872721590255968
+      "normal_mild": 0.6529994178935885,
+      "moderate": 0.25902517128735775,
+      "severe": 0.08797539674356808
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l4_l5",
-      "normal_mild": 0.5988134279008954,
-      "moderate": 0.2680978522449731,
-      "severe": 0.1330887085071298
+      "normal_mild": 0.5842596843000502,
+      "moderate": 0.28231751367449753,
+      "severe": 0.13342279134201812
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l5_s1",
-      "normal_mild": 0.614464551322162,
-      "moderate": 0.2394947422854602,
-      "severe": 0.1460407164762727
+      "normal_mild": 0.6036401660367846,
+      "moderate": 0.25043246068060393,
+      "severe": 0.1459273866959847
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l1_l2",
-      "normal_mild": 0.7595184097439049,
-      "moderate": 0.1635874853096902,
-      "severe": 0.0768940943694906
+      "normal_mild": 0.7662342736870049,
+      "moderate": 0.1585744387330487,
+      "severe": 0.0751912757370155
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l2_l3",
-      "normal_mild": 0.6027237080037594,
-      "moderate": 0.2877943535894155,
-      "severe": 0.1094819494418334
+      "normal_mild": 0.6089847631752491,
+      "moderate": 0.2839979722723365,
+      "severe": 0.10701727819512596
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l3_l4",
-      "normal_mild": 0.5457568317465484,
-      "moderate": 0.3068467916175723,
-      "severe": 0.1473963719350285
+      "normal_mild": 0.5503420427255332,
+      "moderate": 0.3016895658522844,
+      "severe": 0.14796839516144245
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l4_l5",
-      "normal_mild": 0.5524310492444784,
-      "moderate": 0.2876150884293019,
-      "severe": 0.1599538857664447
+      "normal_mild": 0.542537208693102,
+      "moderate": 0.2931951590441167,
+      "severe": 0.16426765030133533
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l5_s1",
-      "normal_mild": 0.6679737451300025,
-      "moderate": 0.2159429488331078,
-      "severe": 0.1160833070008083
+      "normal_mild": 0.6750482710823417,
+      "moderate": 0.2070893739908933,
+      "severe": 0.11786234948784109
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l1_l2",
-      "normal_mild": 0.7271748774126172,
-      "moderate": 0.1761991190863773,
-      "severe": 0.0966260062300716
+      "normal_mild": 0.7353953533247113,
+      "moderate": 0.16968593899160622,
+      "severe": 0.09491870756057319
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l2_l3",
-      "normal_mild": 0.6137570381909608,
-      "moderate": 0.2890613846294582,
-      "severe": 0.0971815708302892
+      "normal_mild": 0.6122487694770098,
+      "moderate": 0.29067032763734457,
+      "severe": 0.09708089460968032
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l3_l4",
-      "normal_mild": 0.571088236104697,
-      "moderate": 0.2835770802199839,
-      "severe": 0.1453346868057269
+      "normal_mild": 0.5667515183798968,
+      "moderate": 0.29079287923872466,
+      "severe": 0.1424555964081082
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l4_l5",
-      "normal_mild": 0.525928388275206,
-      "moderate": 0.2819300524517893,
-      "severe": 0.1921415840601548
+      "normal_mild": 0.5144246888533235,
+      "moderate": 0.30033874917775394,
+      "severe": 0.18523657227400686
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l5_s1",
-      "normal_mild": 0.7021931855753064,
-      "moderate": 0.1903851577639579,
-      "severe": 0.1074216659762896
+      "normal_mild": 0.699226173646748,
+      "moderate": 0.1973722628876567,
+      "severe": 0.10340156670426948
     }
   ]
 }

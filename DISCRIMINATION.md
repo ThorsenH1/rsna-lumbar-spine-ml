@@ -1,6 +1,6 @@
 # Lumbar MRI discrimination
 
-This report describes the previous ensemble. The [learned-localization and grading comparison](RESEARCH.md) reached 0.8740 on the same five held-out folds.
+This report describes the earlier feature ensemble. The [current localizer and original-and-reflected grader](RESEARCH.md) reached 0.8789 on the same five held-out folds.
 
 | Metric | Held-out result |
 | --- | ---: |

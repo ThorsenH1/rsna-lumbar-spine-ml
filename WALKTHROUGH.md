@@ -14,13 +14,13 @@ The localizer estimates the positions of five disc levels. Using the DICOM geome
 
 ## 3. Read the model output
 
-A residual image encoder describes the crops. The spatial-detail branch preserves where evidence appears inside each crop. Five fold models score those representations. The selected prediction combines their average with the previous ensemble. The [trace](examples/study-trace.json) records the fold scores, the reference fraction and the resulting probabilities.
+A residual image encoder describes the crops. The spatial-detail branch preserves where evidence appears inside each crop. Each of five fold models scores the original crops and those same crops reflected left to right when the orientation check passes. It puts the reflected predictions back into the original side order and averages the two passes. The [trace](examples/study-trace.json) records both passes, the fold scores and the final blend.
 
 | L4–L5 spinal canal narrowing | Normal or mild | Moderate | Severe |
 | --- | ---: | ---: | ---: |
 | Previous ensemble | 0.4752 | 0.2328 | 0.2920 |
-| Average of five new spatial-detail models | 0.7996 | 0.0934 | 0.1070 |
-| Final blend | **0.6374** | **0.1631** | **0.1995** |
+| Average of five original-and-reflected spatial-detail models | 0.7979 | 0.1017 | 0.1003 |
+| Final blend | **0.6365** | **0.1673** | **0.1962** |
 
 The final blend uses **50%** of the previous ensemble and **50%** of the new models. Each of the 25 rows has three probabilities summing to one. The input is generated for this demonstration. [Full example JSON](examples/spatial-detail-prediction.json)
 
@@ -53,4 +53,4 @@ Find the L4–L5 spinal canal row in the CSV and check that the three columns su
 | A confident model confuses the moderate grade with its neighbors | Show AUROC for each grade and report a probability-sensitive log loss |
 | The local test has no reference grades | Score the model on five held-out study folds and check file generation on the local test |
 
-The reported model reached **0.8740 macro AUROC** on the held-out predictions for 1,975 studies. It averages 75 comparisons across findings, levels and grades. The competition metric is **0.4917 weighted log loss** in the same folds. The local test study verifies that the system produces 25 rows. [Full research report](RESEARCH.md)
+The reported model reached **0.8789 macro AUROC** on the held-out predictions for 1,975 studies. It averages 75 comparisons across findings, levels and grades. The competition metric is **0.4840 weighted log loss** in the same folds. The local test study verifies that the system produces 25 rows. [Full research report](RESEARCH.md)

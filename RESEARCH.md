@@ -1,6 +1,6 @@
 # Improving lumbar MRI localization and grading
 
-The published model reached **0.8534 macro AUROC** across five held-out folds. Moderate findings were the hardest class at **0.7937**, because they need to be distinguished from the neighboring normal or mild and severe grades. Every severity prediction starts with a crop around an estimated anatomical location. [Current discrimination report](DISCRIMINATION.md)
+The earlier feature ensemble reached **0.8534 macro AUROC** across five held-out folds. Moderate findings were the hardest class at **0.7937**, because they need to be distinguished from the neighboring normal or mild and severe grades. Every severity prediction starts with a crop around an estimated anatomical location. [Earlier discrimination report](DISCRIMINATION.md)
 
 ## Teach the model to locate the disc
 
@@ -43,9 +43,24 @@ Replacing the crops alone raised AUROC from **0.8597 to 0.8680** for the same fi
 
 The equal blend has a 95% study-bootstrap AUROC interval of **0.8685–0.8793**. The overall comparison reuses the established folds, and the single local test study has no released grades. I ran the new raw-DICOM inference on that study and verified all 25 probability rows.
 
+## Score the same anatomy from both left–right orientations
+
+The five frozen spatial-detail graders each read an original crop and a left-right reflected crop. Sagittal slices reverse their depth order. Axial images reflect along the axis that the DICOM geometry identifies as closest to patient left–right. The left and right labels then swap back before the model averages the two passes. Studies with incompatible geometry use the original prediction. The orientation check passed for **1,973 of 1,975** held-out studies.
+
+| Metric on the same five held-out folds | Original-crop blend | Original-and-reflected blend |
+| --- | ---: | ---: |
+| Macro AUROC across 75 cells | 0.8740 | **0.8789** |
+| Macro average precision | 0.5916 | **0.5997** |
+| Weighted log loss | 0.4917 | **0.4840** |
+| Normal or mild AUROC | 0.8862 | **0.8893** |
+| Moderate AUROC | 0.8156 | **0.8207** |
+| Severe AUROC | 0.9203 | **0.9268** |
+
+The paired AUROC gain was **+0.0049**, with a 95% study-bootstrap interval of **+0.0032 to +0.0066**. The selected blend's AUROC interval was **0.8741–0.8833**. The comparison reuses the project's established folds. I verified the new raw-DICOM inference on the generated study and on the local unlabeled study, each with 25 normalized probability rows.
+
 ## Where the classifier still struggles
 
-The central-canal task reaches **0.9298 macro AUROC** on the frozen study folds. The overall result across all five conditions remains **0.8740**. Each condition in the table averages its five lumbar levels.
+The original-crop blend reached **0.9298 macro AUROC** for the central canal and **0.8740** across all five conditions. The table uses that blend to examine where prediction quality was already limited before adding reflection. Each condition averages its five lumbar levels.
 
 | Condition | Macro AUROC across grades | Moderate vs. all other grades | Moderate vs. severe with the raw moderate score | Moderate vs. severe with the conditional score |
 | --- | ---: | ---: | ---: | ---: |
@@ -58,6 +73,8 @@ The central-canal task reaches **0.9298 macro AUROC** on the frozen study folds.
 For the last two columns, the audit keeps cases labeled moderate or severe. The conditional score divides the probability of moderate by the sum of the moderate and severe probabilities. The left foraminal result rises from 0.4661 to 0.7019 on this grade pair. The result shows that the frozen probabilities contain useful grade information when the probability of normal or mild disease is taken out of the comparison.
 
 The four side-region conditions average 0.8601 AUROC. If the central-canal score stayed fixed, those four conditions would need to average approximately 0.8925 to reach an overall AUROC of 0.9000. The pairwise audit guides the next training experiment. The published evaluation continues to use all three grades.
+
+I trained a separate head that first scores abnormality and then estimates severity within abnormal cases. Four recipes competed on an inner validation fold for each outer fold. The best recipe in each inner fold was refit on its outer training studies. The head reached **0.8038 AUROC** alone. A fixed 25% blend with the original-crop ensemble reached **0.8732**. The original-and-reflected model remains the selected ensemble.
 
 After reproducing the five-fold comparison, run the grade audit on its saved probabilities.
 
@@ -76,6 +93,7 @@ $ErrorActionPreference = 'Stop'
 $learned = 'search-artifacts/learned-localizer'
 $graders = 'search-artifacts/spatial-detail-runs'
 $analysis = 'search-artifacts/spatial-detail-assessment'
+$laterality = "$analysis/laterality"
 $plan = "$analysis/deployment.json"
 $cache = 'artifacts/cache/spine-train'
 $folds = 'artifacts/spine/folds.csv'
@@ -91,9 +109,20 @@ foreach ($fold in 0..4) {
 }
 & $p -m medimage.spine_grade_compare --root $data --folds $folds --runs $graders `
     --baseline "$reference/selected-oof.csv" --output $analysis --bootstrap 1000
+& $p -m medimage.spine_laterality --root $data --cache $cache --folds $folds --regions $learned `
+    --runs $graders --reference "$reference/selected-oof.csv" --comparison $analysis `
+    --output $laterality --batch 3 --bootstrap 1000
 & $p -m medimage.spine_detail_infer lock --train-cache $cache --folds $folds `
     --learned $learned --reference $localizer --runs $graders --comparison "$analysis/metrics.json" `
-    --reference-selection "$reference/selection.json" --output $plan
+    --reference-selection "$reference/selection.json" --laterality-report $laterality --output $plan
+```
+
+To repeat the ordinal-head experiment, use the nested feature bank from the [earlier discrimination workflow](DISCRIMINATION.md).
+
+```powershell
+$features = 'search-artifacts/features/spine'
+& $p -m medimage.spine_ordinal_fit --root $data --cache $cache --folds $folds --features $features `
+    --reference "$analysis/equal-blend-oof.csv" --output "$analysis/ordinal" --threads 2 --epochs 10 --batch 48
 ```
 
 For the controlled crop-only comparison, run `medimage.spine_crop_compare` with the same data, cache and folds, the original classifiers, and both region directories. Start with the [prediction walkthrough](WALKTHROUGH.md) to see what the new localizer and graders receive on one example.
