@@ -2,13 +2,13 @@
 
 DICOM geometry, nested landmark localization, and severity grading at five lumbar levels.
 
-**0.8789 macro AUROC** and **0.4840 weighted log loss** over five held-out folds. The 95% study-bootstrap AUROC interval is 0.8741–0.8833.
+**0.8803 macro AUROC** and **0.4836 weighted log loss** over five held-out folds. The 95% study-bootstrap AUROC interval is 0.8756–0.8845.
 
-The selected model blends the previous ensemble with a spatial-detail grader that reads original and reflected crops when the DICOM orientation supports it. See the [full research comparison](RESEARCH.md), [earlier discrimination audit](DISCRIMINATION.md), [search trajectories](figures/search.png), and [synthetic prediction example](examples/README.md).
+The selected model blends the previous ensemble with a spatial-detail grader. The grader reads a regular view and a tighter view of each side region, and uses reflection when the DICOM orientation supports it. See the [full research comparison](RESEARCH.md), [earlier discrimination audit](DISCRIMINATION.md), [search trajectories](figures/search.png), and [synthetic prediction example](examples/README.md).
 
 ## Start with one prediction
 
-See a synthetic MRI study, the actual crop selected by the localizer and the model's three grade probabilities at L4–L5. The [walkthrough](WALKTHROUGH.md) explains how to generate the study and run it yourself. [See the crops for all five disc levels](WHERE-THE-MODEL-LOOKS.md)
+See a synthetic MRI study, the actual crop selected by the localizer and the model's three grade probabilities at L4–L5. The [walkthrough](WALKTHROUGH.md) explains how to generate the study and run it yourself. [See the crops for all five disc levels and the additional side-region view](WHERE-THE-MODEL-LOOKS.md)
 
 ![Synthetic MRI planes, a selected L4–L5 region and the three grade probabilities](examples/workflow.png)
 

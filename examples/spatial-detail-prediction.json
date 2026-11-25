@@ -1,7 +1,7 @@
 {
   "input": "generated MRI study",
-  "model": "equal blend of reference and original-and-reflected spatial-detail graders",
-  "selection_sha256": "e7c938c7a12434c0573236dd17b3b40d6fcc9d8fad210131c83de17f5316717b",
+  "model": "equal blend of reference and reflected spatial-detail graders with narrower lateral crops",
+  "selection_sha256": "c9e8cb4ca3c37ad40272c79c1cdde7490af038e2659d27ec8df0ef6378615628",
   "rows": 25,
   "predictions": [
     {
@@ -36,123 +36,123 @@
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l1_l2",
-      "normal_mild": 0.768690632097423,
-      "moderate": 0.17500292639480897,
-      "severe": 0.05630644198317889
+      "normal_mild": 0.765839914791286,
+      "moderate": 0.17799118279246606,
+      "severe": 0.05616889895391062
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l2_l3",
-      "normal_mild": 0.6829197524674238,
-      "moderate": 0.24906434356234966,
-      "severe": 0.06801591081442887
+      "normal_mild": 0.6829229442961514,
+      "moderate": 0.24900132487528026,
+      "severe": 0.0680757504217035
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l3_l4",
-      "normal_mild": 0.6368961871415376,
-      "moderate": 0.2912272126972675,
-      "severe": 0.07187661370378914
+      "normal_mild": 0.6371397674828767,
+      "moderate": 0.2903382101655006,
+      "severe": 0.07252203379292037
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l4_l5",
-      "normal_mild": 0.5951911628618836,
-      "moderate": 0.2748434887267649,
-      "severe": 0.12996535978163587
+      "normal_mild": 0.6024516731873154,
+      "moderate": 0.2678506144322455,
+      "severe": 0.12969772627693596
     },
     {
       "row_id": "999000_left_neural_foraminal_narrowing_l5_s1",
-      "normal_mild": 0.5941622771695256,
-      "moderate": 0.2657614372484386,
-      "severe": 0.14007628019200635
+      "normal_mild": 0.5984071918204427,
+      "moderate": 0.2607420606352389,
+      "severe": 0.14085074414499102
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l1_l2",
-      "normal_mild": 0.7884525176882744,
-      "moderate": 0.14526960312156,
-      "severe": 0.06627786985889539
+      "normal_mild": 0.787329303920269,
+      "moderate": 0.14637418904108923,
+      "severe": 0.06629650362709068
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l2_l3",
-      "normal_mild": 0.6999792288988829,
-      "moderate": 0.23935319372452796,
-      "severe": 0.06066758138476866
+      "normal_mild": 0.7038712155073881,
+      "moderate": 0.2355668254289776,
+      "severe": 0.060561968586989624
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l3_l4",
-      "normal_mild": 0.6529994178935885,
-      "moderate": 0.25902517128735775,
-      "severe": 0.08797539674356808
+      "normal_mild": 0.6535332788154483,
+      "moderate": 0.25826044779270885,
+      "severe": 0.08820626069005806
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l4_l5",
-      "normal_mild": 0.5842596843000502,
-      "moderate": 0.28231751367449753,
-      "severe": 0.13342279134201812
+      "normal_mild": 0.5906131043191999,
+      "moderate": 0.2765482228994369,
+      "severe": 0.13283865660894656
     },
     {
       "row_id": "999000_right_neural_foraminal_narrowing_l5_s1",
-      "normal_mild": 0.6036401660367846,
-      "moderate": 0.25043246068060393,
-      "severe": 0.1459273866959847
+      "normal_mild": 0.6080393971130251,
+      "moderate": 0.24632028212770815,
+      "severe": 0.14564033217029643
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l1_l2",
-      "normal_mild": 0.7662342736870049,
-      "moderate": 0.1585744387330487,
-      "severe": 0.0751912757370155
+      "normal_mild": 0.7584226498752832,
+      "moderate": 0.16485187125857914,
+      "severe": 0.07672547371999824
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l2_l3",
-      "normal_mild": 0.6089847631752491,
-      "moderate": 0.2839979722723365,
-      "severe": 0.10701727819512596
+      "normal_mild": 0.609145624190569,
+      "moderate": 0.28347939956933255,
+      "severe": 0.10737498728674835
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l3_l4",
-      "normal_mild": 0.5503420427255332,
-      "moderate": 0.3016895658522844,
-      "severe": 0.14796839516144245
+      "normal_mild": 0.5508216842822731,
+      "moderate": 0.3004523868858814,
+      "severe": 0.14872593753039834
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l4_l5",
-      "normal_mild": 0.542537208693102,
-      "moderate": 0.2931951590441167,
-      "severe": 0.16426765030133533
+      "normal_mild": 0.5389283858705312,
+      "moderate": 0.2970575064979493,
+      "severe": 0.16401413554209282
     },
     {
       "row_id": "999000_left_subarticular_stenosis_l5_s1",
-      "normal_mild": 0.6750482710823417,
-      "moderate": 0.2070893739908933,
-      "severe": 0.11786234948784109
+      "normal_mild": 0.6735713693127037,
+      "moderate": 0.20784785091876978,
+      "severe": 0.1185807779151946
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l1_l2",
-      "normal_mild": 0.7353953533247113,
-      "moderate": 0.16968593899160622,
-      "severe": 0.09491870756057319
+      "normal_mild": 0.7289653830602765,
+      "moderate": 0.1748381560575217,
+      "severe": 0.0961964614343014
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l2_l3",
-      "normal_mild": 0.6122487694770098,
-      "moderate": 0.29067032763734457,
-      "severe": 0.09708089460968032
+      "normal_mild": 0.6133906052261591,
+      "moderate": 0.2895661612786352,
+      "severe": 0.09704322972451329
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l3_l4",
-      "normal_mild": 0.5667515183798968,
-      "moderate": 0.29079287923872466,
-      "severe": 0.1424555964081082
+      "normal_mild": 0.5694864417426287,
+      "moderate": 0.28892359599471085,
+      "severe": 0.14158995822188442
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l4_l5",
-      "normal_mild": 0.5144246888533235,
-      "moderate": 0.30033874917775394,
-      "severe": 0.18523657227400686
+      "normal_mild": 0.5118845251575113,
+      "moderate": 0.3024666789546609,
+      "severe": 0.1856488024676218
     },
     {
       "row_id": "999000_right_subarticular_stenosis_l5_s1",
-      "normal_mild": 0.699226173646748,
-      "moderate": 0.1973722628876567,
-      "severe": 0.10340156670426948
+      "normal_mild": 0.6990361957624555,
+      "moderate": 0.19756910648196935,
+      "severe": 0.10339469307800753
     }
   ]
 }

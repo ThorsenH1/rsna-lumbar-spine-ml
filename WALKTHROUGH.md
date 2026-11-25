@@ -14,7 +14,7 @@ The localizer estimates the positions of five disc levels. Using the DICOM geome
 
 ## 3. Read the model output
 
-A residual image encoder describes the crops. The spatial-detail branch preserves where evidence appears inside each crop. Each of five fold models scores the original crops and those same crops reflected left to right when the orientation check passes. It puts the reflected predictions back into the original side order and averages the two passes. The [trace](examples/study-trace.json) records both passes, the fold scores and the final blend.
+A residual image encoder describes the crops. The spatial-detail branch preserves where evidence appears inside each crop. Each of five fold models scores the original crops and those same crops reflected left to right when the orientation check passes. It puts the reflected predictions back into the original side order and averages the two passes. Each side region also gets a tighter view, which contributes a quarter of that grader's score. The [trace](examples/study-trace.json) records the crop coordinates, fold scores and final blend. [Look at both crop sizes](WHERE-THE-MODEL-LOOKS.md#compare-two-views-of-the-same-side-region)
 
 | L4–L5 spinal canal narrowing | Normal or mild | Moderate | Severe |
 | --- | ---: | ---: | ---: |
@@ -53,4 +53,4 @@ Find the L4–L5 spinal canal row in the CSV and check that the three columns su
 | A confident model confuses the moderate grade with its neighbors | Show AUROC for each grade and report a probability-sensitive log loss |
 | The local test has no reference grades | Score the model on five held-out study folds and check file generation on the local test |
 
-The reported model reached **0.8789 macro AUROC** on the held-out predictions for 1,975 studies. It averages 75 comparisons across findings, levels and grades. The competition metric is **0.4840 weighted log loss** in the same folds. The local test study verifies that the system produces 25 rows. [Full research report](RESEARCH.md)
+The reported model reached **0.8803 macro AUROC** on the held-out predictions for 1,975 studies. It averages 75 comparisons across findings, levels and grades. The competition metric is **0.4836 weighted log loss** in the same folds. The local test study verifies that the system produces 25 rows. [Full research report](RESEARCH.md)

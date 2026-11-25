@@ -60,7 +60,7 @@ The paired AUROC gain was **+0.0049**, with a 95% study-bootstrap interval of **
 
 ## Where the classifier still struggles
 
-The selected original-and-reflected blend reached **0.9328 macro AUROC** for the central canal and **0.8789** across all five conditions. In the central canal, moderate cases reached **0.9001** when ranked against the other grades. The same comparison was hardest for the two subarticular regions, which are the side passages where nerve roots travel. Left foraminal narrowing gained the most from reflection, increasing from **0.8504 to 0.8615**. Each condition averages its five lumbar levels.
+The original-and-reflected baseline reached **0.9328 macro AUROC** for the central canal and **0.8789** across all five conditions. In the central canal, moderate cases reached **0.9001** when ranked against the other grades. The same comparison was hardest for the two subarticular regions, which are the side passages where nerve roots travel. Left foraminal narrowing gained the most from reflection, increasing from **0.8504 to 0.8615**. Each condition averages its five lumbar levels.
 
 ![Central-canal results are higher than side-region results, particularly for moderate cases](figures/ordinal-progress.png)
 
@@ -74,9 +74,9 @@ The selected original-and-reflected blend reached **0.9328 macro AUROC** for the
 
 For the last two columns, the audit keeps cases labeled moderate or severe. The conditional score divides the probability of moderate by the sum of the moderate and severe probabilities. On that subset, the result for the left foraminal region rises from 0.4681 to 0.7514. The three-grade evaluation continues to use every available grade.
 
-The four side-region conditions average **0.8654 AUROC**. At the current central-canal score, an overall **0.9000** requires an average of approximately **0.8918** across the four side regions. This is the reason the next experiment changes the image crops around those regions.
+The four side-region conditions averaged **0.8654 AUROC** at this stage. At the same central-canal score, an overall **0.9000** requires an average of approximately **0.8918** across those four conditions. The next experiment changes the image crops around those regions.
 
-I trained a separate head that first scores abnormality and then estimates severity within abnormal cases. Four recipes competed on an inner validation fold for each outer fold. The best recipe in each inner fold was refit on its outer training studies. The head reached **0.8038 AUROC** alone. A fixed 25% blend with the original-crop ensemble reached **0.8732**. The original-and-reflected model remains the selected ensemble.
+I trained a separate head that first scores abnormality and then estimates severity within abnormal cases. Four recipes competed on an inner validation fold for each outer fold. The best recipe in each inner fold was refit on its outer training studies. The head reached **0.8038 AUROC** alone. A fixed 25% blend with the original-crop ensemble reached **0.8732**.
 
 After reproducing the five-fold comparison, run the grade audit on its saved probabilities.
 
@@ -87,6 +87,20 @@ After reproducing the five-fold comparison, run the grade audit on its saved pro
     --probabilities "$laterality/equal-blend-oof.csv" --output "$laterality/ordinal-audit.json" `
     --reference-audit "$analysis/ordinal-audit.json" --figure "$laterality/ordinal-progress.png"
 ```
+
+## Use a tighter field for the side regions
+
+The side passages are small. I tested a fixed second crop with **80% of the original width and height**, centered on the same point and resized to the same input size. Each frozen fold grader scored it in both orientations wherever DICOM geometry supported reflection. For each of the 20 side targets, the spatial grader contributes 75% of its usual score and 25% of the narrow-crop score. The reference model and spatial grader still contribute half of the final probability each. The five central-canal outputs keep their existing calculation.
+
+| Metric on the same five folds and 1,975 studies | Original-and-reflected baseline | With narrower side crops |
+| --- | ---: | ---: |
+| Macro AUROC across all 75 cells | 0.8789 | **0.8803** |
+| Macro average precision | 0.5997 | **0.6009** |
+| Weighted log loss | 0.4840 | **0.4836** |
+| Moderate AUROC | 0.8207 | **0.8223** |
+| Severe AUROC | 0.9268 | **0.9287** |
+
+The paired AUROC gain was **+0.00134**, with a 95% study-bootstrap interval of **+0.00082 to +0.00188**. The new AUROC interval is **0.8756–0.8845**. The comparison uses the established outer folds. For the local unlabeled test study, the pipeline verifies the DICOM-to-submission workflow. [See the two actual crops and the final synthetic prediction](WHERE-THE-MODEL-LOOKS.md)
 
 ## Reproduce the five-fold comparison
 
@@ -99,7 +113,8 @@ $learned = 'search-artifacts/learned-localizer'
 $graders = 'search-artifacts/spatial-detail-runs'
 $analysis = 'search-artifacts/spatial-detail-assessment'
 $laterality = "$analysis/laterality"
-$plan = "$analysis/deployment.json"
+$zoom = "$analysis/lateral-zoom"
+$plan = "$zoom/deployment.json"
 $cache = 'artifacts/cache/spine-train'
 $folds = 'artifacts/spine/folds.csv'
 $localizer = 'artifacts/spine/localization'
@@ -117,9 +132,12 @@ foreach ($fold in 0..4) {
 & $p -m medimage.spine_laterality --root $data --cache $cache --folds $folds --regions $learned `
     --runs $graders --reference "$reference/selected-oof.csv" --comparison $analysis `
     --output $laterality --batch 3 --bootstrap 1000
+& $p -m medimage.spine_lateral_zoom --root $data --cache $cache --folds $folds --regions $learned `
+    --runs $graders --reference "$reference/selected-oof.csv" --comparison $analysis --laterality $laterality `
+    --output $zoom --batch 3 --bootstrap 1000
 & $p -m medimage.spine_detail_infer lock --train-cache $cache --folds $folds `
     --learned $learned --reference $localizer --runs $graders --comparison "$analysis/metrics.json" `
-    --reference-selection "$reference/selection.json" --laterality-report $laterality --output $plan
+    --reference-selection "$reference/selection.json" --laterality-report $laterality --zoom-report $zoom --output $plan
 ```
 
 To repeat the ordinal-head experiment, use the nested feature bank from the [earlier discrimination workflow](DISCRIMINATION.md).
