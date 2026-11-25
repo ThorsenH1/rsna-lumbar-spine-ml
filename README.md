@@ -4,6 +4,8 @@ DICOM geometry, nested landmark localization, and severity grading at five lumba
 
 **0.8868 macro AUROC** and **0.4734 weighted log loss** over five held-out folds. The 95% study-bootstrap AUROC interval is 0.8822–0.8909.
 
+The optional geometric blend reached **0.8875 AUROC** and **0.4855 weighted log loss** on the same studies. [Compare both scoring rules](RESEARCH.md#compare-ways-to-combine-the-two-grading-branches)
+
 The selected model combines the grade-adjusted original-grid ensemble with graders that read higher-resolution crops reconstructed from the source DICOMs. The graders use both left–right orientations when the scan geometry supports it. [Full research comparison](RESEARCH.md) · [Synthetic prediction example](examples/README.md)
 
 ## Start with one prediction

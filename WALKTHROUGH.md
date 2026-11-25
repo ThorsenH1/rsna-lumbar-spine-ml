@@ -24,6 +24,8 @@ A residual image encoder describes the crops. Five higher-resolution graders sco
 
 The final blend gives both branches equal weight. Each of the 25 rows has three probabilities summing to one. The input is generated for this demonstration. [Full example JSON](examples/spatial-detail-prediction.json)
 
+The optional geometric blend also gives both branches equal weight. For each grade, multiply the two branch scores, take the square root, and rescale the three values to sum to one. In the example above the branches disagree on the severe grade, so its score drops from **0.0985 to 0.0151**. The geometric result is **0.8992 normal or mild, 0.0857 moderate, and 0.0151 severe**. On the labeled folds this formula slightly improved AUROC and increased weighted log loss. [Geometric prediction CSV](examples/geometric-prediction.csv) · [Measured comparison](RESEARCH.md#compare-ways-to-combine-the-two-grading-branches)
+
 Inside the original-grid branch, adjusting the weights also changes the scores for the left subarticular region at L4–L5.
 
 | Left side at L4–L5 | Normal or mild | Moderate | Severe |
@@ -53,6 +55,13 @@ $example = 'search-artifacts/synthetic-spine'
 ```
 
 Find the L4–L5 spinal canal row in the CSV and check that the three columns sum to 1. The published scores use a specific set of trained weights. A freshly trained run can produce different scores.
+
+After running the [pooling comparison](RESEARCH.md#reproduce-the-higher-resolution-model), use its `$pooling` output and the study trace to reproduce the optional geometric result.
+
+```powershell
+& $p -m medimage.spine_pool_audit apply --report "$pooling/metrics.json" --plan $nativePlan `
+    --trace "$example/study-trace.json" --output "$example/geometric-prediction.csv"
+```
 
 ## 5. Understand the evaluation
 

@@ -145,6 +145,18 @@ The higher-resolution pass reopens the source DICOMs, renders **256-pixel** slic
 
 The selected blend has a 95% study-bootstrap AUROC interval of **0.8822–0.8909**. The paired effect of adding reflection to the higher-resolution grader was **+0.00304 AUROC**, with a 95% interval of **+0.00236 to +0.00371**. Reflection was available for **1,973 of 1,975** held-out studies. Moderate-grade AUROC was **0.8299**, compared with **0.8263** for the earlier grade-adjusted model. The released labels cover the five established outer folds. [Follow one DICOM prediction](WALKTHROUGH.md)
 
+## Compare ways to combine the two grading branches
+
+Each branch returns three numbers for normal or mild, moderate, and severe. The deployed model takes a simple average. I tested two fixed formulas on the same 1,975 held-out studies. The ordinal formula combines the odds of “moderate or severe” and “severe,” then recovers the middle grade by subtraction. The geometric formula takes the square root of the product of the two scores for each grade, then rescales the three values to sum to one.
+
+| Pooling rule | Macro AUROC | Moderate AUROC | Macro average precision | Weighted log loss ↓ |
+| --- | ---: | ---: | ---: | ---: |
+| Arithmetic average | 0.88676 | 0.82992 | 0.61258 | **0.47336** |
+| Ordinal log-odds | 0.88749 | 0.83051 | 0.61426 | 0.48611 |
+| Geometric mean | **0.88751** | **0.83054** | **0.61435** | 0.48546 |
+
+The geometric variant gained **0.00075 AUROC**. The paired 95% study-bootstrap interval was **+0.00009 to +0.00133**, based on 855 of 1,000 resamples with all grades present in the benchmark cells. The two alternatives ranked patients slightly better and had higher log loss. Treat this as an exploratory comparison on the existing folds. The usual prediction command uses the arithmetic average, and the walkthrough includes the optional ranking variant on the same generated scan.
+
 ## Reproduce the five-fold comparison
 
 Run the [original training workflow](README.md#reproduce-the-experiment) to generate the reference fold checkpoints and prior selection. The following steps reproduce the new spatial-detail experiment. The five outer-fold classifiers use a fixed schedule and are scored after training.
@@ -246,6 +258,14 @@ foreach ($fold in 0..4) {
     --reference $localizer --runs $nativeGraders --comparison "$nativeComparison/metrics.json" `
     --reference-selection $plan --native-train-cache $nativeCache --native-regions $nativeRegions `
     --laterality-report $nativeReflection --output $nativePlan
+```
+
+Compare the score formulas after the reflected native run finishes.
+
+```powershell
+$pooling = "$analysis/native-pooling"
+& $p -m medimage.spine_pool_audit compare --root $data --folds $folds --original $gradeOof `
+    --native-comparison $nativeComparison --reflection $nativeReflection --output $pooling
 ```
 
 ### Fine-tune the side-region ranking
