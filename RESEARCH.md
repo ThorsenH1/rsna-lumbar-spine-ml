@@ -114,7 +114,36 @@ During training, the spatial grader weighs normal or mild, moderate, and severe 
 | Severe AUROC | **0.9287** | 0.9270 |
 | Weighted log loss | **0.4836** | 0.4877 |
 
-The paired AUROC gain was **+0.00064**, with a 95% study-bootstrap interval of **+0.00033 to +0.00096**. The adjusted model's AUROC interval is **0.8762–0.8854**. It ranks the moderate cases better on these folds. The original narrower-crop model remains the best measured choice for the competition's weighted log loss. Both configurations can be reproduced with the same trained graders and deployment command.
+The paired AUROC gain was **+0.00064**, with a 95% study-bootstrap interval of **+0.00033 to +0.00096**. The adjusted model's AUROC interval is **0.8762–0.8854**. It ranks the moderate cases better on these folds. The original narrower-crop model had the lower weighted log loss in this pair. Both configurations can be reproduced with the same trained graders and deployment command.
+
+## Test whether adjacent levels improve the ranking
+
+For each held-out fold, I learned how the grades at neighboring disc levels occur together using the other four folds. When scoring a side target, the model applied a small fixed adjustment from the probabilities at the adjacent levels. The central-canal targets kept their existing calculation. The adjusted macro AUROC was **0.8799**, down **0.00096**, with a paired 95% interval of **−0.00118 to −0.00076**. Weighted log loss fell from 0.4877 to 0.4861. The best AUROC remained **0.8809**, so the published model uses the original scores. This measures the effect of combining probabilities after inference. [See the separate physical crop audit](WHERE-THE-MODEL-LOOKS.md#check-the-crops-against-held-out-anatomical-points)
+
+## Test more widely spaced axial slices
+
+The physical crop audit found that most missed points fell farther than 5 mm from every selected slice. I added a second pass for the ten subarticular targets. It reads the same middle slice and moves both neighboring slices one position farther away. The crop centers are projected into the new planes in physical coordinates. The extra pass contributes 25% of the spatial grader's scores for those targets before grade weight adjustment.
+
+| Metric on the same 1,975 held-out studies | Grade-adjusted model | Extra axial pass |
+| --- | ---: | ---: |
+| Macro AUROC | 0.88090 | **0.88100** |
+| Macro average precision | 0.60331 | **0.60398** |
+| Weighted log loss | 0.48771 | **0.48756** |
+
+The paired AUROC increase was **+0.00010**, with a 95% interval of **−0.00006 to +0.00026**. The lower-resolution pipeline kept the simpler recipe at **0.8809 AUROC**. The added axial slices improved anatomical coverage, and the grading interval spans zero. [See the annotated-point coverage](WHERE-THE-MODEL-LOOKS.md#check-the-crops-against-held-out-anatomical-points)
+
+## Preserve more detail from the original DICOM slices
+
+The higher-resolution pass reopens the source DICOMs, renders **256-pixel** slice grids, and projects the same physical regions into them. The five new graders read **128-pixel** crops. Each starts from its corresponding spatial-detail grader and trains for four epochs on the same outer-fold development studies. The predictions use the fixed average of the final three checkpoints. The final model averages the grade-adjusted model above and the higher-resolution model, with the two orientations averaged inside the new branch where geometry supports it.
+
+| Model evaluated on the same 1,975 held-out studies | Macro AUROC | Macro average precision | Weighted log loss |
+| --- | ---: | ---: | ---: |
+| Grade-adjusted original-grid model | 0.8809 | 0.6033 | 0.4877 |
+| Higher-resolution grader alone | 0.8731 | 0.5921 | 0.5830 |
+| Equal blend with the higher-resolution grader | 0.8837 | 0.6060 | 0.4811 |
+| Equal blend with original and reflected higher-resolution crops | **0.8868** | **0.6126** | **0.4734** |
+
+The selected blend has a 95% study-bootstrap AUROC interval of **0.8822–0.8909**. The paired effect of adding reflection to the higher-resolution grader was **+0.00304 AUROC**, with a 95% interval of **+0.00236 to +0.00371**. Reflection was available for **1,973 of 1,975** held-out studies. Moderate-grade AUROC was **0.8299**, compared with **0.8263** for the earlier grade-adjusted model. The released labels cover the five established outer folds. [Follow one DICOM prediction](WALKTHROUGH.md)
 
 ## Reproduce the five-fold comparison
 
@@ -129,6 +158,7 @@ $analysis = 'search-artifacts/spatial-detail-assessment'
 $laterality = "$analysis/laterality"
 $zoom = "$analysis/lateral-zoom"
 $gradeWeights = "$analysis/lateral-grade-weights.json"
+$gradeOof = "$analysis/grade-adjusted-oof.csv"
 $plan = "$zoom/deployment-auroc.json"
 $cache = 'artifacts/cache/spine-train'
 $folds = 'artifacts/spine/folds.csv'
@@ -151,7 +181,8 @@ foreach ($fold in 0..4) {
     --runs $graders --reference "$reference/selected-oof.csv" --comparison $analysis --laterality $laterality `
     --output $zoom --batch 3 --bootstrap 1000
 & $p -m medimage.spine_weight_audit --root $data --cache $cache --folds $folds `
-    --reference "$reference/selected-oof.csv" --zoom $zoom --output $gradeWeights --bootstrap 1000
+    --reference "$reference/selected-oof.csv" --zoom $zoom --output $gradeWeights `
+    --predictions-output $gradeOof --bootstrap 1000
 & $p -m medimage.spine_detail_infer lock --train-cache $cache --folds $folds `
     --learned $learned --reference $localizer --runs $graders --comparison "$analysis/metrics.json" `
     --reference-selection "$reference/selection.json" --laterality-report $laterality --zoom-report $zoom `
@@ -159,6 +190,23 @@ foreach ($fold in 0..4) {
 ```
 
 For the lower-log-loss model, use a separate output path for the deployment plan and omit `--grade-weight-report` from the lock command.
+
+To reproduce the adjacent-level experiment, run the following after the grade weight audit.
+
+```powershell
+& $p -m medimage.spine_context_audit --root $data --cache $cache --folds $folds `
+    --reference "$reference/selected-oof.csv" --zoom $zoom --grade-weight-report $gradeWeights `
+    --output "$analysis/adjacent-level-context.json"
+```
+
+Run the [physical coverage audit](WHERE-THE-MODEL-LOOKS.md#check-the-crops-against-held-out-anatomical-points) before measuring the extra axial pass.
+
+```powershell
+& $p -m medimage.spine_slice_context --root $data --cache $cache --folds $folds `
+    --reference "$reference/selected-oof.csv" --regions $learned --runs $graders --zoom $zoom `
+    --grade-weight-report $gradeWeights --support-report "$analysis/crop-support.json" `
+    --output "$analysis/wide-axial" --batch 2 --bootstrap 1000
+```
 
 To repeat the ordinal-head experiment, use the nested feature bank from the [earlier discrimination workflow](DISCRIMINATION.md).
 
@@ -169,3 +217,33 @@ $features = 'search-artifacts/features/spine'
 ```
 
 For the controlled crop-only comparison, run `medimage.spine_crop_compare` with the same data, cache and folds, the original classifiers, and both region directories. Start with the [prediction walkthrough](WALKTHROUGH.md) to see what the new localizer and graders receive on one example.
+
+### Reproduce the higher-resolution model
+
+Run this after creating the original-grid deployment plan and its grade-adjusted held-out predictions above.
+
+```powershell
+$nativeCache = "$analysis/native-cache256"
+$nativeRegions = "$analysis/native-regions"
+$nativeGraders = "$analysis/native-graders"
+$nativeComparison = "$analysis/native-comparison"
+$nativeReflection = "$analysis/native-reflection"
+$nativePlan = "$analysis/native-deployment.json"
+& $p -m medimage.spine_native prepare --root $data --base $cache --output $nativeCache --size 256 --workers 6
+& $p -m medimage.spine_native reproject --base $cache --native $nativeCache --reference $learned `
+    --folds $folds --output $nativeRegions
+foreach ($fold in 0..4) {
+    & $p -m medimage.spine_train --root $data --cache $nativeCache --folds $folds --localization $nativeRegions `
+        --weights $torchCache --parent "$graders/fold-$fold/final.pt" --output "$nativeGraders/fold-$fold" `
+        --fold $fold --epochs 4 --batch-size 8 --spatial-detail --resolution 128 --seed 9451
+}
+& $p -m medimage.spine_grade_compare --root $data --folds $folds --runs $nativeGraders `
+    --baseline $gradeOof --output $nativeComparison --paired --bootstrap 1000
+& $p -m medimage.spine_laterality --root $data --cache $nativeCache --folds $folds --regions $nativeRegions `
+    --runs $nativeGraders --reference $gradeOof --comparison $nativeComparison --output $nativeReflection `
+    --batch 3 --bootstrap 1000
+& $p -m medimage.spine_detail_infer lock --train-cache $cache --folds $folds --learned $learned `
+    --reference $localizer --runs $nativeGraders --comparison "$nativeComparison/metrics.json" `
+    --reference-selection $plan --native-train-cache $nativeCache --native-regions $nativeRegions `
+    --laterality-report $nativeReflection --output $nativePlan
+```

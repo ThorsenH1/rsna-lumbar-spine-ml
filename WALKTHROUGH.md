@@ -10,21 +10,21 @@ A study contains a stack of DICOM files for each acquisition. DICOM stores the i
 
 ## 2. Locate the anatomy
 
-The localizer estimates the positions of five disc levels. Using the DICOM geometry, the pipeline finds the slices and extracts a small region around each estimate. The box is the actual crop selected by the first fold's learned localizer for spinal canal stenosis at L4–L5. In the synthetic example the box is near the edge of the image, which illustrates a localization failure. [All five crops and their model scores](WHERE-THE-MODEL-LOOKS.md)
+The localizer estimates the positions of five disc levels. Using the DICOM geometry, the pipeline finds the slices and extracts a small region around each estimate. It projects the same physical locations into the higher-resolution grid. The box is the actual crop selected by the first fold's learned localizer at L4–L5. In the synthetic example the box is near the edge of the image, which illustrates a localization failure. [All five crops and their model scores](WHERE-THE-MODEL-LOOKS.md)
 
 ## 3. Read the model output
 
-A residual image encoder describes the crops. The spatial-detail branch preserves where evidence appears inside each crop. Each of five fold models scores the original crops and those same crops reflected left to right when the orientation check passes. It puts the reflected predictions back into the original side order and averages the two passes. Each side region also gets a tighter view, which contributes a quarter of that grader's score. The [trace](examples/study-trace.json) records the crop coordinates, fold scores and final blend. [Look at both crop sizes](WHERE-THE-MODEL-LOOKS.md#compare-two-views-of-the-same-side-region)
+A residual image encoder describes the crops. Five higher-resolution graders score the original and reflected crops when the orientation check passes. The system puts the reflected predictions back into the original side order and averages the two passes. The result is then averaged with the grade-adjusted original-grid prediction. The trace records the crop coordinates, fold scores and final blend. [Trace](examples/study-trace.json)
 
 | L4–L5 spinal canal narrowing | Normal or mild | Moderate | Severe |
 | --- | ---: | ---: | ---: |
-| Previous ensemble | 0.4752 | 0.2328 | 0.2920 |
-| Average of five original-and-reflected spatial-detail models | 0.7979 | 0.1017 | 0.1003 |
-| Final blend | **0.6365** | **0.1673** | **0.1962** |
+| Grade-adjusted original-grid ensemble | 0.6365 | 0.1673 | 0.1962 |
+| Average of five higher-resolution graders | 0.9657 | 0.0334 | 0.0009 |
+| Final blend | **0.8011** | **0.1003** | **0.0985** |
 
-The final blend uses **50%** of the previous ensemble and **50%** of the new models. For side targets, it partially compensates for the spatial grader's training weights before the final average. Each of the 25 rows has three probabilities summing to one. The input is generated for this demonstration. [Full example JSON](examples/spatial-detail-prediction.json)
+The final blend gives both branches equal weight. Each of the 25 rows has three probabilities summing to one. The input is generated for this demonstration. [Full example JSON](examples/spatial-detail-prediction.json)
 
-The same example shows how adjusting the weights changes the scores for the left subarticular region at L4–L5.
+Inside the original-grid branch, adjusting the weights also changes the scores for the left subarticular region at L4–L5.
 
 | Left side at L4–L5 | Normal or mild | Moderate | Severe |
 | --- | ---: | ---: | ---: |
@@ -33,7 +33,7 @@ The same example shows how adjusting the weights changes the scores for the left
 
 ## 4. Generate the study and rerun the selected model
 
-Use the Python environment, `$learned`, `$graders`, and `$plan` from the [training and deployment guide](RESEARCH.md#reproduce-the-five-fold-comparison). The example includes the first model's [starting reference probabilities](examples/synthetic-reference.csv) for the generated study. The following commands reproduce the previous ensemble and pass its 25 rows to the new graders.
+Use `$p`, `$localizer`, `$learned`, `$graders`, `$plan`, `$nativeGraders`, and `$nativePlan` from the [training and deployment guide](RESEARCH.md#reproduce-the-five-fold-comparison). The commands generate the scan, produce the original-grid probabilities, then pass those 25 rows to the higher-resolution graders. The example contains the starting reference probabilities for the first step. [Starting reference](examples/synthetic-reference.csv)
 
 ```powershell
 $example = 'search-artifacts/synthetic-spine'
@@ -43,9 +43,12 @@ $example = 'search-artifacts/synthetic-spine'
     --localization artifacts/spine/localization --incumbent examples/synthetic-reference.csv `
     --output "$example/previous-ensemble.csv"
 & $p -m medimage.spine_detail_infer predict --plan $plan --root $example --cache "$example/cache" `
-    --reference artifacts/spine/localization --learned $learned --runs $graders `
-    --prior "$example/previous-ensemble.csv" --output "$example/prediction.csv" --trace "$example/study-trace.json"
-& $p -m medimage.workflow_figure spine --examples $example --cache "$example/cache" `
+    --reference $localizer --learned $learned --runs $graders --prior "$example/previous-ensemble.csv" `
+    --output "$example/grade-adjusted.csv" --trace "$example/grade-adjusted-trace.json"
+& $p -m medimage.spine_detail_infer predict --plan $nativePlan --root $example --cache "$example/cache" `
+    --native-cache "$example/cache256" --reference $localizer --learned $learned --runs $nativeGraders `
+    --prior "$example/grade-adjusted.csv" --output "$example/prediction.csv" --trace "$example/study-trace.json"
+& $p -m medimage.workflow_figure spine --examples $example --cache "$example/cache256" `
     --trace "$example/study-trace.json" --output "$example/workflow.png"
 ```
 
@@ -60,4 +63,4 @@ Find the L4–L5 spinal canal row in the CSV and check that the three columns su
 | A confident model confuses the moderate grade with its neighbors | Show AUROC for each grade and report a probability-sensitive log loss |
 | The local test has no reference grades | Score the model on five held-out study folds and check file generation on the local test |
 
-The reported model reached **0.8809 macro AUROC** on the held-out predictions for 1,975 studies. It averages 75 comparisons across findings, levels and grades. Its weighted log loss is **0.4877** on these folds. The narrower-crop model before grade weight adjustment reached the lower log loss of **0.4836**. The local test study checks the 25-row output format. [Full research report](RESEARCH.md)
+The reported model reached **0.8868 macro AUROC** on the held-out predictions for 1,975 studies. It averages 75 comparisons across findings, levels and grades. Its weighted log loss is **0.4734** on these folds. The local unlabeled test study verifies the 25-row output. [Full research report](RESEARCH.md)

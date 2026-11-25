@@ -2,9 +2,9 @@
 
 DICOM geometry, nested landmark localization, and severity grading at five lumbar levels.
 
-**0.8809 macro AUROC** over five held-out folds, with a 95% study-bootstrap interval of 0.8762–0.8854. The same model has **0.4877 weighted log loss**. The best measured weighted log loss is **0.4836** from the narrower-crop model used before the grade weight adjustment.
+**0.8868 macro AUROC** and **0.4734 weighted log loss** over five held-out folds. The 95% study-bootstrap AUROC interval is 0.8822–0.8909.
 
-The AUROC-selected model blends the previous ensemble with a spatial-detail grader. The grader reads a regular view and a tighter view of each side region and uses reflection when DICOM orientation supports it. It partially compensates for the severity weights used during training. See the [full research comparison](RESEARCH.md), [earlier discrimination audit](DISCRIMINATION.md), [search trajectories](figures/search.png), and [synthetic prediction example](examples/README.md).
+The selected model combines the grade-adjusted original-grid ensemble with graders that read higher-resolution crops reconstructed from the source DICOMs. The graders use both left–right orientations when the scan geometry supports it. [Full research comparison](RESEARCH.md) · [Synthetic prediction example](examples/README.md)
 
 ## Start with one prediction
 
@@ -65,6 +65,6 @@ The runner writes the initial experiment under `artifacts/` and the extended sea
 
 ## Predict from raw input
 
-Run the [spatial-detail reproduction commands](RESEARCH.md#reproduce-the-five-fold-comparison) to prepare the current deployment lock. The [prediction walkthrough](WALKTHROUGH.md) shows the raw DICOM commands for the current ensemble. To score the supplied real test study, use its dataset root and a reference prediction generated for that same study.
+Run the [spatial-detail reproduction commands](RESEARCH.md#reproduce-the-five-fold-comparison) and the [higher-resolution training commands](RESEARCH.md#reproduce-the-higher-resolution-model) to prepare both locks. The prediction walkthrough shows how to run them in order. To score the supplied real test study, use its dataset root and a reference prediction generated for that same study. [DICOM walkthrough](WALKTHROUGH.md)
 
 The [example](examples/README.md) runs the selected local models on deterministic synthetic inputs. This is a research and education project.

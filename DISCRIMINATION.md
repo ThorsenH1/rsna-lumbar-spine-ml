@@ -1,6 +1,6 @@
 # Lumbar MRI discrimination
 
-This report describes the earlier feature ensemble. The [current localizer and spatial grader](RESEARCH.md) reached 0.8809 on the same five held-out folds.
+This report describes the earlier feature ensemble. The [current higher-resolution blend](RESEARCH.md#preserve-more-detail-from-the-original-dicom-slices) reached 0.8868 on the same five held-out folds.
 
 | Metric | Held-out result |
 | --- | ---: |
