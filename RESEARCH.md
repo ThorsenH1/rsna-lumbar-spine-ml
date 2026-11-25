@@ -43,6 +43,29 @@ Replacing the crops alone raised AUROC from **0.8597 to 0.8680** for the same fi
 
 The equal blend has a 95% study-bootstrap AUROC interval of **0.8685–0.8793**. The overall comparison reuses the established folds, and the single local test study has no released grades. I ran the new raw-DICOM inference on that study and verified all 25 probability rows.
 
+## Where the classifier still struggles
+
+The central-canal task reaches **0.9298 macro AUROC** on the frozen study folds. The overall result across all five conditions remains **0.8740**. Each condition in the table averages its five lumbar levels.
+
+| Condition | Macro AUROC across grades | Moderate vs. all other grades | Moderate vs. severe with the raw moderate score | Moderate vs. severe with the conditional score |
+| --- | ---: | ---: | ---: | ---: |
+| Central canal | 0.9298 | 0.8956 | 0.5921 | 0.7555 |
+| Left foraminal | 0.8504 | 0.7981 | 0.4661 | 0.7019 |
+| Right foraminal | 0.8623 | 0.8046 | 0.4694 | 0.7802 |
+| Left subarticular | 0.8655 | 0.7929 | 0.5771 | 0.7535 |
+| Right subarticular | 0.8622 | 0.7866 | 0.5882 | 0.7568 |
+
+For the last two columns, the audit keeps cases labeled moderate or severe. The conditional score divides the probability of moderate by the sum of the moderate and severe probabilities. The left foraminal result rises from 0.4661 to 0.7019 on this grade pair. The result shows that the frozen probabilities contain useful grade information when the probability of normal or mild disease is taken out of the comparison.
+
+The four side-region conditions average 0.8601 AUROC. If the central-canal score stayed fixed, those four conditions would need to average approximately 0.8925 to reach an overall AUROC of 0.9000. The pairwise audit guides the next training experiment. The published evaluation continues to use all three grades.
+
+After reproducing the five-fold comparison, run the grade audit on its saved probabilities.
+
+```powershell
+& $p -m medimage.spine_ordinal_audit --root $data --cache $cache `
+    --probabilities "$analysis/equal-blend-oof.csv" --output "$analysis/ordinal-audit.json"
+```
+
 ## Reproduce the five-fold comparison
 
 Run the [original training workflow](README.md#reproduce-the-experiment) to generate the reference fold checkpoints and prior selection. The following steps reproduce the new spatial-detail experiment. The five outer-fold classifiers use a fixed schedule and are scored after training.
