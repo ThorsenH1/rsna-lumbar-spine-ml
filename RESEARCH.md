@@ -60,19 +60,21 @@ The paired AUROC gain was **+0.0049**, with a 95% study-bootstrap interval of **
 
 ## Where the classifier still struggles
 
-The original-crop blend reached **0.9298 macro AUROC** for the central canal and **0.8740** across all five conditions. The table uses that blend to examine where prediction quality was already limited before adding reflection. Each condition averages its five lumbar levels.
+The selected original-and-reflected blend reached **0.9328 macro AUROC** for the central canal and **0.8789** across all five conditions. In the central canal, moderate cases reached **0.9001** when ranked against the other grades. The same comparison was hardest for the two subarticular regions, which are the side passages where nerve roots travel. Left foraminal narrowing gained the most from reflection, increasing from **0.8504 to 0.8615**. Each condition averages its five lumbar levels.
+
+![Central-canal results are higher than side-region results, particularly for moderate cases](figures/ordinal-progress.png)
 
 | Condition | Macro AUROC across grades | Moderate vs. all other grades | Moderate vs. severe with the raw moderate score | Moderate vs. severe with the conditional score |
 | --- | ---: | ---: | ---: | ---: |
-| Central canal | 0.9298 | 0.8956 | 0.5921 | 0.7555 |
-| Left foraminal | 0.8504 | 0.7981 | 0.4661 | 0.7019 |
-| Right foraminal | 0.8623 | 0.8046 | 0.4694 | 0.7802 |
-| Left subarticular | 0.8655 | 0.7929 | 0.5771 | 0.7535 |
-| Right subarticular | 0.8622 | 0.7866 | 0.5882 | 0.7568 |
+| Central canal | 0.9328 | 0.9001 | 0.5950 | 0.7663 |
+| Left foraminal | 0.8615 | 0.8052 | 0.4681 | 0.7514 |
+| Right foraminal | 0.8667 | 0.8109 | 0.4691 | 0.7789 |
+| Left subarticular | 0.8678 | 0.7946 | 0.5742 | 0.7546 |
+| Right subarticular | 0.8657 | 0.7925 | 0.5884 | 0.7605 |
 
-For the last two columns, the audit keeps cases labeled moderate or severe. The conditional score divides the probability of moderate by the sum of the moderate and severe probabilities. The left foraminal result rises from 0.4661 to 0.7019 on this grade pair. The result shows that the frozen probabilities contain useful grade information when the probability of normal or mild disease is taken out of the comparison.
+For the last two columns, the audit keeps cases labeled moderate or severe. The conditional score divides the probability of moderate by the sum of the moderate and severe probabilities. On that subset, the result for the left foraminal region rises from 0.4681 to 0.7514. The three-grade evaluation continues to use every available grade.
 
-The four side-region conditions average 0.8601 AUROC. If the central-canal score stayed fixed, those four conditions would need to average approximately 0.8925 to reach an overall AUROC of 0.9000. The pairwise audit guides the next training experiment. The published evaluation continues to use all three grades.
+The four side-region conditions average **0.8654 AUROC**. At the current central-canal score, an overall **0.9000** requires an average of approximately **0.8918** across the four side regions. This is the reason the next experiment changes the image crops around those regions.
 
 I trained a separate head that first scores abnormality and then estimates severity within abnormal cases. Four recipes competed on an inner validation fold for each outer fold. The best recipe in each inner fold was refit on its outer training studies. The head reached **0.8038 AUROC** alone. A fixed 25% blend with the original-crop ensemble reached **0.8732**. The original-and-reflected model remains the selected ensemble.
 
@@ -81,6 +83,9 @@ After reproducing the five-fold comparison, run the grade audit on its saved pro
 ```powershell
 & $p -m medimage.spine_ordinal_audit --root $data --cache $cache `
     --probabilities "$analysis/equal-blend-oof.csv" --output "$analysis/ordinal-audit.json"
+& $p -m medimage.spine_ordinal_audit --root $data --cache $cache `
+    --probabilities "$laterality/equal-blend-oof.csv" --output "$laterality/ordinal-audit.json" `
+    --reference-audit "$analysis/ordinal-audit.json" --figure "$laterality/ordinal-progress.png"
 ```
 
 ## Reproduce the five-fold comparison
