@@ -247,3 +247,25 @@ foreach ($fold in 0..4) {
     --reference-selection $plan --native-train-cache $nativeCache --native-regions $nativeRegions `
     --laterality-report $nativeReflection --output $nativePlan
 ```
+
+### Fine-tune the side-region ranking
+
+The ordinary training loss rewards probable grades and emphasizes severe cases. The follow-up also compares two patients at the same side target. For each grade it rewards assigning a higher score to the patient with that grade. Missing grades are skipped. The 20 side targets use this extra loss with a fixed weight of 0.32. Each fold starts from its corresponding higher-resolution grader. The five held-out folds assess the fixed training recipe after four epochs.
+
+```powershell
+$rankGraders = "$analysis/native-ranking-graders"
+$rankComparison = "$analysis/native-ranking-original"
+$rankReflection = "$analysis/native-ranking-reflected"
+$nativeOof = "$nativeReflection/equal-blend-oof.csv"
+foreach ($fold in 0..4) {
+    & $p -m medimage.spine_train --root $data --cache $nativeCache --folds $folds `
+        --localization $nativeRegions --weights $torchCache --parent "$nativeGraders/fold-$fold/final.pt" `
+        --output "$rankGraders/fold-$fold" --fold $fold --epochs 4 --batch-size 8 --spatial-detail `
+        --resolution 128 --lateral-ranking-weight 0.32 --seed 9711
+}
+& $p -m medimage.spine_grade_compare --root $data --folds $folds --runs $rankGraders `
+    --baseline $nativeOof --output $rankComparison --paired --bootstrap 1000
+& $p -m medimage.spine_laterality --root $data --cache $nativeCache --folds $folds --regions $nativeRegions `
+    --runs $rankGraders --reference $nativeOof --comparison $rankComparison --output $rankReflection `
+    --batch 3 --bootstrap 1000
+```
