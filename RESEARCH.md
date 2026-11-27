@@ -157,6 +157,26 @@ Each branch returns three numbers for normal or mild, moderate, and severe. The 
 
 The geometric variant gained **0.00075 AUROC**. The paired 95% study-bootstrap interval was **+0.00009 to +0.00133**, based on 855 of 1,000 resamples with all grades present in the benchmark cells. The two alternatives ranked patients slightly better and had higher log loss. Treat this as an exploratory comparison on the existing folds. The usual prediction command uses the arithmetic average, and the walkthrough includes the optional ranking variant on the same generated scan.
 
+## Distinguish moderate from both neighboring grades
+
+Moderate cases can be confused with normal or mild cases and with severe cases. To measure those two errors separately, I compared only the two grades shown in each panel. I divided the moderate score by the sum of the scores for those two grades, then measured AUROC at each disc level and averaged across levels.
+
+![Separate MRI grade-boundary comparisons for each model branch and the geometric blend](figures/grade-boundaries.png)
+
+The geometric blend ranged from **0.8470 to 0.9399** across anatomical regions for moderate versus normal or mild, and from **0.7617 to 0.8231** for moderate versus severe. In the right neural foramen, the higher-resolution branch reached **0.8164** at the moderate–severe boundary. The original-grid branch reached **0.7726**, and the geometric blend reached **0.8231**. These pairwise measures use selected grades. The main benchmark uses every observed grade.
+
+I then split the severity score into two steps. The model first estimates whether the grade is moderate or severe. It then estimates the share of that score to assign to severe. The three final scores always sum to one. I compared equal weighting and two fixed 75/25 allocations, favoring a different branch at each step. The rules were evaluated on the existing 1,975 outer-fold studies.
+
+| Combination | Macro AUROC | Moderate AUROC | Macro average precision | Weighted log loss ↓ |
+| --- | ---: | ---: | ---: | ---: |
+| Arithmetic reference | 0.88676 | 0.82992 | 0.61258 | **0.47336** |
+| Geometric reference | **0.88751** | 0.83054 | **0.61435** | 0.48546 |
+| Two steps, equally weighted | 0.88733 | 0.82999 | 0.61418 | 0.48404 |
+| Original grid emphasized in the first step | 0.88322 | 0.82135 | 0.60870 | 0.50421 |
+| Higher resolution emphasized in the first step | 0.88743 | **0.83188** | 0.61410 | 0.47476 |
+
+The higher-resolution-first rule assigned 75% of the log-odds weight to the higher-resolution branch in the first step and 75% to the original-grid branch in the second. Its paired overall AUROC change from the geometric reference was **−0.00008**, with a 95% study-bootstrap interval of **−0.00073 to +0.00059**. This rule gives a slightly higher moderate-grade score ranking and lower log loss than the geometric blend. The walkthrough shows what the formula changes for one generated image. [Aggregate boundary and pooling results](figures/grade-boundaries.json) · [Prediction walkthrough](WALKTHROUGH.md)
+
 ## Reproduce the five-fold comparison
 
 Run the [original training workflow](README.md#reproduce-the-experiment) to generate the reference fold checkpoints and prior selection. The following steps reproduce the new spatial-detail experiment. The five outer-fold classifiers use a fixed schedule and are scored after training.
@@ -268,9 +288,23 @@ $pooling = "$analysis/native-pooling"
     --native-comparison $nativeComparison --reflection $nativeReflection --output $pooling
 ```
 
+```powershell
+$boundaries = "$analysis/grade-boundaries"
+& $p -m medimage.spine_grade_boundaries --root $data --folds $folds --original $gradeOof `
+    --native-comparison $nativeComparison --reflection $nativeReflection --output $boundaries
+```
+
 ### Fine-tune the side-region ranking
 
 The ordinary training loss rewards probable grades and emphasizes severe cases. The follow-up also compares two patients at the same side target. For each grade it rewards assigning a higher score to the patient with that grade. Missing grades are skipped. The 20 side targets use this extra loss with a fixed weight of 0.32. Each fold starts from its corresponding higher-resolution grader. The five held-out folds assess the fixed training recipe after four epochs.
+
+| Five-fold comparison | Macro AUROC | Macro average precision | Weighted log loss ↓ |
+| --- | ---: | ---: | ---: |
+| Existing reflected arithmetic blend | **0.88676** | **0.61258** | **0.47336** |
+| Blend with rank-tuned grader | 0.88348 | 0.60219 | 0.50582 |
+| Blend with rank-tuned grader and reflection | 0.88578 | 0.60424 | 0.49586 |
+
+The new grader added to the existing ensemble scored lower on both ranking and weighted log loss. In a 393-study pilot on the first fold, I also combined 75% of the original checkpoint and 25% of the rank-tuned checkpoint, parameter by parameter. The resulting single grader reached **0.86437**, compared with **0.86477** for the original grader and **0.86152** for the rank-tuned grader. Blending their predictions with the same weights reached **0.86588**. The pilot uses 74 evaluable grade comparisons on one fold. [Aggregate results for the checkpoint pilot](figures/checkpoint-interpolation-fold0.json) · [Weight interpolation method by Wortsman et al.](https://openaccess.thecvf.com/content/CVPR2022/html/Wortsman_Robust_Fine-Tuning_of_Zero-Shot_Models_CVPR_2022_paper.html)
 
 ```powershell
 $rankGraders = "$analysis/native-ranking-graders"
@@ -288,4 +322,10 @@ foreach ($fold in 0..4) {
 & $p -m medimage.spine_laterality --root $data --cache $nativeCache --folds $folds --regions $nativeRegions `
     --runs $rankGraders --reference $nativeOof --comparison $rankComparison --output $rankReflection `
     --batch 3 --bootstrap 1000
+```
+
+```powershell
+& $p -m medimage.spine_checkpoint_blend --root $data --cache $nativeCache --folds $folds `
+    --regions $nativeRegions --parent "$nativeGraders/fold-0" --tuned "$rankGraders/fold-0" `
+    --output "$analysis/checkpoint-interpolation/fold-0" --fold 0 --fraction 0.25 --batch 4
 ```

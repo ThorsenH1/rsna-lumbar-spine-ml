@@ -6,6 +6,8 @@ DICOM geometry, nested landmark localization, and severity grading at five lumba
 
 The optional geometric blend reached **0.8875 AUROC** and **0.4855 weighted log loss** on the same studies. [Compare both scoring rules](RESEARCH.md#compare-ways-to-combine-the-two-grading-branches)
 
+The two-step variant reached **0.8874 AUROC** and **0.4748 weighted log loss**. It had the strongest ranking for the moderate grade among the compared rules. [See where moderate and severe cases were hard to separate](RESEARCH.md#distinguish-moderate-from-both-neighboring-grades)
+
 The selected model combines the grade-adjusted original-grid ensemble with graders that read higher-resolution crops reconstructed from the source DICOMs. The graders use both left–right orientations when the scan geometry supports it. [Full research comparison](RESEARCH.md) · [Synthetic prediction example](examples/README.md)
 
 ## Start with one prediction

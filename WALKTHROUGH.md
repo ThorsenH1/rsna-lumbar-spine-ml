@@ -26,6 +26,8 @@ The final blend gives both branches equal weight. Each of the 25 rows has three 
 
 The optional geometric blend also gives both branches equal weight. For each grade, multiply the two branch scores, take the square root, and rescale the three values to sum to one. In the example above the branches disagree on the severe grade, so its score drops from **0.0985 to 0.0151**. The geometric result is **0.8992 normal or mild, 0.0857 moderate, and 0.0151 severe**. On the labeled folds this formula slightly improved AUROC and increased weighted log loss. [Geometric prediction CSV](examples/geometric-prediction.csv) · [Measured comparison](RESEARCH.md#compare-ways-to-combine-the-two-grading-branches)
 
+The two-step variant first assigns **0.0664** to moderate or severe at L4–L5. It then allocates about **31.2%** of that score to severe. The result is **0.9336 normal or mild, 0.0456 moderate, and 0.0207 severe**. You can compare the same target across all three formulas using the example CSVs. [Two-step prediction CSV](examples/two-step-prediction.csv) · [Grade-boundary results](RESEARCH.md#distinguish-moderate-from-both-neighboring-grades)
+
 Inside the original-grid branch, adjusting the weights also changes the scores for the left subarticular region at L4–L5.
 
 | Left side at L4–L5 | Normal or mild | Moderate | Severe |
@@ -61,6 +63,8 @@ After running the [pooling comparison](RESEARCH.md#reproduce-the-higher-resoluti
 ```powershell
 & $p -m medimage.spine_pool_audit apply --report "$pooling/metrics.json" --plan $nativePlan `
     --trace "$example/study-trace.json" --output "$example/geometric-prediction.csv"
+& $p -m medimage.spine_pool_audit apply --report "$boundaries/metrics.json" --plan $nativePlan `
+    --trace "$example/study-trace.json" --method native_presence --output "$example/two-step-prediction.csv"
 ```
 
 ## 5. Understand the evaluation

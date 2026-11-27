@@ -1,0 +1,567 @@
+{
+  "studies": 1975,
+  "fold_sha256": "53bb0c78610f4071f73bd0ea761de0bd334012acf2e2850beecc92d7443316cf",
+  "original_predictions_sha256": "022f96826063fae0f5c3e8df0f6eb8191e9dd2c418b44fbd364052307d19752f",
+  "native_reflection_metrics_sha256": "3046c0180f7bfd8b7086b74b6097209890599197fd25e95a199d3f95bde02682",
+  "native_reflection_plan_sha256": "2ab8b803a16239279289b285b2de9aa4d6e211fb4e77327b67a0cf8b26ccb363",
+  "baseline_predictions_sha256": "48e460396666b8c58ce9907fc31e56e28f7425eee86340d558e63ef3c498cf89",
+  "controls": {
+    "original_grid": {
+      "macro_auroc": 0.8808998518604113,
+      "macro_average_precision": 0.6033073103691684,
+      "auroc_by_grade": [
+        0.8893451604754523,
+        0.8263058843281021,
+        0.9270485107776796
+      ],
+      "evaluable_cells": 75,
+      "rsna_log_loss": 0.48771234104419803
+    },
+    "reflected_native": {
+      "macro_auroc": 0.8803829601505261,
+      "macro_average_precision": 0.601042145565258,
+      "auroc_by_grade": [
+        0.8921031879419735,
+        0.8205529216422498,
+        0.9284927708673552
+      ],
+      "evaluable_cells": 75,
+      "rsna_log_loss": 0.5332807110651709
+    },
+    "arithmetic": {
+      "macro_auroc": 0.886757819288566,
+      "macro_average_precision": 0.6125811002082533,
+      "auroc_by_grade": [
+        0.895634277779758,
+        0.8299246611317765,
+        0.9347145189541641
+      ],
+      "evaluable_cells": 75,
+      "rsna_log_loss": 0.4733628317600647
+    },
+    "geometric": {
+      "macro_auroc": 0.8875099072150776,
+      "macro_average_precision": 0.6143476343366271,
+      "auroc_by_grade": [
+        0.8960520526021827,
+        0.8305421813951834,
+        0.9359354876478667
+      ],
+      "evaluable_cells": 75,
+      "rsna_log_loss": 0.48546318651860937
+    }
+  },
+  "boundaries_by_condition": {
+    "original_grid": [
+      {
+        "condition": "spinal_canal_stenosis",
+        "macro_auroc": 0.9328468047799773,
+        "auroc_by_grade": {
+          "normal_mild": 0.9456201406832552,
+          "moderate": 0.90014876378512,
+          "severe": 0.9527715098715566
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.9115467587635384,
+            "conditional_score_auroc": 0.9279211118926509
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.5949932578511203,
+            "conditional_score_auroc": 0.7663318739547934
+          }
+        }
+      },
+      {
+        "condition": "left_neural_foraminal_narrowing",
+        "macro_auroc": 0.8643881275768425,
+        "auroc_by_grade": {
+          "normal_mild": 0.8598862883363626,
+          "moderate": 0.8100987543695901,
+          "severe": 0.9231793400245746
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8251784606844188,
+            "conditional_score_auroc": 0.8415129334328133
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.4254679261037156,
+            "conditional_score_auroc": 0.7692794310004403
+          }
+        }
+      },
+      {
+        "condition": "right_neural_foraminal_narrowing",
+        "macro_auroc": 0.8687415909440637,
+        "auroc_by_grade": {
+          "normal_mild": 0.8644444106040943,
+          "moderate": 0.8171231086368138,
+          "severe": 0.9246572535912824
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8313945187699566,
+            "conditional_score_auroc": 0.8472225985387631
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.42860898273599013,
+            "conditional_score_auroc": 0.772570414676558
+          }
+        }
+      },
+      {
+        "condition": "left_subarticular_stenosis",
+        "macro_auroc": 0.8700645472472303,
+        "auroc_by_grade": {
+          "normal_mild": 0.8910035700039977,
+          "moderate": 0.8025430019625963,
+          "severe": 0.9166470697750965
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.817448178447415,
+            "conditional_score_auroc": 0.8590860403653868
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.5346111153091772,
+            "conditional_score_auroc": 0.746788000765315
+          }
+        }
+      },
+      {
+        "condition": "right_subarticular_stenosis",
+        "macro_auroc": 0.8684581887539433,
+        "auroc_by_grade": {
+          "normal_mild": 0.8857713927495514,
+          "moderate": 0.801615792886391,
+          "severe": 0.9179873806258874
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8173896046329443,
+            "conditional_score_auroc": 0.8532603341993914
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.5532342758240342,
+            "conditional_score_auroc": 0.7562561662747083
+          }
+        }
+      }
+    ],
+    "reflected_native": [
+      {
+        "condition": "spinal_canal_stenosis",
+        "macro_auroc": 0.939768185861826,
+        "auroc_by_grade": {
+          "normal_mild": 0.9538244161996017,
+          "moderate": 0.9098260044694639,
+          "severe": 0.9556541369164119
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.9194575582317546,
+            "conditional_score_auroc": 0.9386281010853766
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.6568569940317641,
+            "conditional_score_auroc": 0.7873843892178155
+          }
+        }
+      },
+      {
+        "condition": "left_neural_foraminal_narrowing",
+        "macro_auroc": 0.860332059559918,
+        "auroc_by_grade": {
+          "normal_mild": 0.8572369254993942,
+          "moderate": 0.7989806912014811,
+          "severe": 0.9247785619788786
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.81067510276783,
+            "conditional_score_auroc": 0.8391444083175055
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.44823767734755754,
+            "conditional_score_auroc": 0.7642545937902968
+          }
+        }
+      },
+      {
+        "condition": "right_neural_foraminal_narrowing",
+        "macro_auroc": 0.8674356992051415,
+        "auroc_by_grade": {
+          "normal_mild": 0.8633113400593213,
+          "moderate": 0.8058959987844798,
+          "severe": 0.9330997587716234
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8166537787683664,
+            "conditional_score_auroc": 0.8451281373987382
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.4978224683527895,
+            "conditional_score_auroc": 0.8163816961975385
+          }
+        }
+      },
+      {
+        "condition": "left_subarticular_stenosis",
+        "macro_auroc": 0.8674283270651563,
+        "auroc_by_grade": {
+          "normal_mild": 0.8945513910098892,
+          "moderate": 0.7916735435710845,
+          "severe": 0.9160600466144956
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.7962569540999423,
+            "conditional_score_auroc": 0.8629345460169802
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.610476270636287,
+            "conditional_score_auroc": 0.7526174513951757
+          }
+        }
+      },
+      {
+        "condition": "right_subarticular_stenosis",
+        "macro_auroc": 0.8669505290605888,
+        "auroc_by_grade": {
+          "normal_mild": 0.8915918669416609,
+          "moderate": 0.7963883701847397,
+          "severe": 0.9128713500553658
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8035502721486363,
+            "conditional_score_auroc": 0.8608358265351985
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.5902794422850834,
+            "conditional_score_auroc": 0.750473298888507
+          }
+        }
+      }
+    ],
+    "arithmetic": [
+      {
+        "condition": "spinal_canal_stenosis",
+        "macro_auroc": 0.9407940999290942,
+        "auroc_by_grade": {
+          "normal_mild": 0.9524075410957448,
+          "moderate": 0.9111055004405337,
+          "severe": 0.9588692582510039
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.921626924141877,
+            "conditional_score_auroc": 0.936544436233784
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.6335778258602175,
+            "conditional_score_auroc": 0.7910444427208758
+          }
+        }
+      },
+      {
+        "condition": "left_neural_foraminal_narrowing",
+        "macro_auroc": 0.8692141817173857,
+        "auroc_by_grade": {
+          "normal_mild": 0.8654608419937688,
+          "moderate": 0.8123205619482767,
+          "severe": 0.9298611412101115
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8258416604398187,
+            "conditional_score_auroc": 0.846930430216369
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.43253771782112266,
+            "conditional_score_auroc": 0.7671672307987312
+          }
+        }
+      },
+      {
+        "condition": "right_neural_foraminal_narrowing",
+        "macro_auroc": 0.8747093425998376,
+        "auroc_by_grade": {
+          "normal_mild": 0.8696212704734503,
+          "moderate": 0.818126528609084,
+          "severe": 0.9363802287169781
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.830593951707662,
+            "conditional_score_auroc": 0.8516245661651085
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.4692221123788386,
+            "conditional_score_auroc": 0.8061465474654625
+          }
+        }
+      },
+      {
+        "condition": "left_subarticular_stenosis",
+        "macro_auroc": 0.8748980413332315,
+        "auroc_by_grade": {
+          "normal_mild": 0.8975575160701977,
+          "moderate": 0.8027208014697674,
+          "severe": 0.924415806459729
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8114159562635466,
+            "conditional_score_auroc": 0.8655015613944584
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.5849742499486575,
+            "conditional_score_auroc": 0.7616492567836887
+          }
+        }
+      },
+      {
+        "condition": "right_subarticular_stenosis",
+        "macro_auroc": 0.8741734308632828,
+        "auroc_by_grade": {
+          "normal_mild": 0.8931242192656281,
+          "moderate": 0.8053499131912216,
+          "severe": 0.9240461601329987
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8161795662119756,
+            "conditional_score_auroc": 0.8614704168741103
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.5778226061169153,
+            "conditional_score_auroc": 0.7644591911296033
+          }
+        }
+      }
+    ],
+    "geometric": [
+      {
+        "condition": "spinal_canal_stenosis",
+        "macro_auroc": 0.9433317889269922,
+        "auroc_by_grade": {
+          "normal_mild": 0.9545434817278571,
+          "moderate": 0.9133319324145113,
+          "severe": 0.9621199526386086
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.9234939167084336,
+            "conditional_score_auroc": 0.9398864436598752
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.6386223471339783,
+            "conditional_score_auroc": 0.7918365170980695
+          }
+        }
+      },
+      {
+        "condition": "left_neural_foraminal_narrowing",
+        "macro_auroc": 0.8696393373105465,
+        "auroc_by_grade": {
+          "normal_mild": 0.8649181752481636,
+          "moderate": 0.8124270315410584,
+          "severe": 0.9315728051424177
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8260137108549077,
+            "conditional_score_auroc": 0.8469984367971156
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.42683203170910594,
+            "conditional_score_auroc": 0.7832628535342089
+          }
+        }
+      },
+      {
+        "condition": "right_neural_foraminal_narrowing",
+        "macro_auroc": 0.8755341352392512,
+        "auroc_by_grade": {
+          "normal_mild": 0.8694759081184538,
+          "moderate": 0.8185845437206096,
+          "severe": 0.9385419538786899
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8310622463311805,
+            "conditional_score_auroc": 0.8518879839463608
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.46841823295753454,
+            "conditional_score_auroc": 0.8230975452013171
+          }
+        }
+      },
+      {
+        "condition": "left_subarticular_stenosis",
+        "macro_auroc": 0.8748563267271603,
+        "auroc_by_grade": {
+          "normal_mild": 0.897581350832936,
+          "moderate": 0.8026376540611692,
+          "severe": 0.924349975287376
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8110538524131219,
+            "conditional_score_auroc": 0.8662985924121223
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.5821018076053377,
+            "conditional_score_auroc": 0.7616529545424722
+          }
+        }
+      },
+      {
+        "condition": "right_subarticular_stenosis",
+        "macro_auroc": 0.8741879478714379,
+        "auroc_by_grade": {
+          "normal_mild": 0.8937413470835033,
+          "moderate": 0.8057297452385687,
+          "severe": 0.923092751292242
+        },
+        "moderate_vs": {
+          "normal_mild": {
+            "levels": 5,
+            "moderate_score_auroc": 0.8162495190692163,
+            "conditional_score_auroc": 0.8624242061036954
+          },
+          "severe": {
+            "levels": 5,
+            "moderate_score_auroc": 0.5782943462874832,
+            "conditional_score_auroc": 0.7659728427298442
+          }
+        }
+      }
+    ]
+  },
+  "pools": {
+    "equal_factored": {
+      "macro_auroc": 0.8873316207732082,
+      "macro_average_precision": 0.6141754724681863,
+      "auroc_by_grade": [
+        0.896047189317556,
+        0.8299929034040743,
+        0.9359547695979945
+      ],
+      "evaluable_cells": 75,
+      "rsna_log_loss": 0.4840351500350336,
+      "study_bootstrap_ci95": [
+        0.8827283308756126,
+        0.8915563734837251
+      ],
+      "bootstrap_repeats": 1000,
+      "valid_bootstrap_replicates": 855,
+      "paired_auroc_delta_ci95": [
+        -0.00027619300784211264,
+        -6.912982873357177e-05
+      ],
+      "paired_auroc_delta": -0.0001782864418694574
+    },
+    "original_presence": {
+      "macro_auroc": 0.8832238132861452,
+      "macro_average_precision": 0.6086981944902352,
+      "auroc_by_grade": [
+        0.8949858297372008,
+        0.821347139250061,
+        0.9333384708711737
+      ],
+      "evaluable_cells": 75,
+      "rsna_log_loss": 0.5042095595552544,
+      "study_bootstrap_ci95": [
+        0.8783502878014644,
+        0.8873824940491668
+      ],
+      "bootstrap_repeats": 1000,
+      "valid_bootstrap_replicates": 855,
+      "paired_auroc_delta_ci95": [
+        -0.0051326598711752104,
+        -0.0035026112528231236
+      ],
+      "paired_auroc_delta": -0.004286093928932422
+    },
+    "native_presence": {
+      "macro_auroc": 0.8874254441484891,
+      "macro_average_precision": 0.6140972974902523,
+      "auroc_by_grade": [
+        0.8947693125881508,
+        0.8318842930358266,
+        0.9356227268214901
+      ],
+      "evaluable_cells": 75,
+      "rsna_log_loss": 0.4747601343869968,
+      "study_bootstrap_ci95": [
+        0.8827674645214117,
+        0.8918079719208828
+      ],
+      "bootstrap_repeats": 1000,
+      "valid_bootstrap_replicates": 855,
+      "paired_auroc_delta_ci95": [
+        -0.0007329694984655133,
+        0.0005880748986763994
+      ],
+      "paired_auroc_delta": -8.446306658849156e-05
+    }
+  },
+  "original_grid_fractions": {
+    "equal_factored": [
+      0.5,
+      0.5
+    ],
+    "original_presence": [
+      0.75,
+      0.25
+    ],
+    "native_presence": [
+      0.25,
+      0.75
+    ]
+  },
+  "comparison": "Fixed probability factorizations compared with the existing geometric pool"
+}

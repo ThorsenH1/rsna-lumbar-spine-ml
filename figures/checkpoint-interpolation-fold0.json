@@ -1,0 +1,57 @@
+{
+  "fold": 0,
+  "studies": 393,
+  "folds_sha256": "53bb0c78610f4071f73bd0ea761de0bd334012acf2e2850beecc92d7443316cf",
+  "cache_sha256": "3d138f1f2991a1908decf215a2de5a80c351692e696d5353fbbc6206b5774c17",
+  "region_sha256": "326980ba845fade60aa6481ecc90b1096112736237b91facc95519c8a62a0662",
+  "parent_sha256": "526d03bf6a799a2d2423d86a47a1c3908117efbbf533f77bd4544d58b6aaa1db",
+  "tuned_sha256": "a050a5095026ca687e738a786fdb546c59a9262a2870f8f22f346e69801a4c27",
+  "tuned_fraction": 0.25,
+  "reflection": false,
+  "metrics": {
+    "parent": {
+      "macro_auroc": 0.8647716450099991,
+      "macro_average_precision": 0.6096819966661724,
+      "auroc_by_grade": [
+        0.8784165153007892,
+        0.8017736537283637,
+        0.9161811460421294
+      ],
+      "evaluable_cells": 74,
+      "rsna_log_loss": 0.5885379061550198
+    },
+    "tuned": {
+      "macro_auroc": 0.8615186426710385,
+      "macro_average_precision": 0.6026609622171402,
+      "auroc_by_grade": [
+        0.8753945247771634,
+        0.8049900520992936,
+        0.9059485473227262
+      ],
+      "evaluable_cells": 74,
+      "rsna_log_loss": 0.7362301728656073
+    },
+    "probability_interpolation": {
+      "macro_auroc": 0.8658813305843632,
+      "macro_average_precision": 0.608957936646145,
+      "auroc_by_grade": [
+        0.879551276938038,
+        0.8060031479748503,
+        0.9140149100175275
+      ],
+      "evaluable_cells": 74,
+      "rsna_log_loss": 0.5891266155420081
+    },
+    "parameter_interpolation": {
+      "macro_auroc": 0.8643708708545276,
+      "macro_average_precision": 0.6062892059237367,
+      "auroc_by_grade": [
+        0.8787715286927554,
+        0.8041774087886701,
+        0.9120717085916422
+      ],
+      "evaluable_cells": 74,
+      "rsna_log_loss": 0.6155667309977175
+    }
+  }
+}
