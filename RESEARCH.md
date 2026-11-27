@@ -177,6 +177,16 @@ I then split the severity score into two steps. The model first estimates whethe
 
 The higher-resolution-first rule assigned 75% of the log-odds weight to the higher-resolution branch in the first step and 75% to the original-grid branch in the second. Its paired overall AUROC change from the geometric reference was **−0.00008**, with a 95% study-bootstrap interval of **−0.00073 to +0.00059**. This rule gives a slightly higher moderate-grade score ranking and lower log loss than the geometric blend. The walkthrough shows what the formula changes for one generated image. [Aggregate boundary and pooling results](figures/grade-boundaries.json) · [Prediction walkthrough](WALKTHROUGH.md)
 
+## Test a second MRI plane for foraminal grading
+
+The foramina are the openings where nerves leave the spine. The grading model's main foraminal crop comes from a sagittal image, viewed from the side. I used the crop center and the DICOM orientation to find the same physical location in an axial image, viewed across the spine. The axial crop had to keep its center in frame and within 8 mm of an available plane. The algorithm uses the localizer's estimated coordinates and the image geometry.
+
+![A generated sagittal MRI and matching axial MRI with the exact crops used by the experimental learner](examples/two-mri-planes.png)
+
+The colored rectangles show the field of view in each full image. Each close-up shows the center slice of the corresponding stack. The model uses measurements from the center slice and the available neighbors. In this generated example, the selected axial plane is 7.9 mm from the estimated point, near the 8 mm cutoff. Both crops are near an image edge, which makes the placement easy to inspect before interpreting any score. [Coordinates for the generated example](examples/two-mri-planes.json)
+
+The two experimental learners both use intensity and local contrast measurements from the sagittal crop. One also receives the axial measurements. For each input, two gradient-boosted trees estimate the score for moderate or severe and the proportion of that score assigned to severe. Each learner trains on four folds and scores the fifth. The comparison gives the experimental learner 15% of the geometric blend for the ten foraminal targets and keeps the other fifteen target scores from the geometric reference.
+
 ## Reproduce the five-fold comparison
 
 Run the [original training workflow](README.md#reproduce-the-experiment) to generate the reference fold checkpoints and prior selection. The following steps reproduce the new spatial-detail experiment. The five outer-fold classifiers use a fixed schedule and are scored after training.
@@ -292,6 +302,19 @@ $pooling = "$analysis/native-pooling"
 $boundaries = "$analysis/grade-boundaries"
 & $p -m medimage.spine_grade_boundaries --root $data --folds $folds --original $gradeOof `
     --native-comparison $nativeComparison --reflection $nativeReflection --output $boundaries
+```
+
+```powershell
+& $p -m medimage.spine_crossplane --root $data --cache $nativeCache --folds $folds `
+    --regions $nativeRegions --reference "$pooling/geometric-oof.csv" `
+    --output "$analysis/crossplane" --workers 5 --bootstrap 1000
+```
+
+Generate the example study and its trace first using the [prediction walkthrough](WALKTHROUGH.md).
+
+```powershell
+& $p -m medimage.spine_crossplane_example --cache "$example/cache256" `
+    --trace "$example/study-trace.json" --output "$example/crossplane"
 ```
 
 ### Fine-tune the side-region ranking

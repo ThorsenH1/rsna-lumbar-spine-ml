@@ -12,6 +12,8 @@ A study contains a stack of DICOM files for each acquisition. DICOM stores the i
 
 The localizer estimates the positions of five disc levels. Using the DICOM geometry, the pipeline finds the slices and extracts a small region around each estimate. It projects the same physical locations into the higher-resolution grid. The box is the actual crop selected by the first fold's learned localizer at L4–L5. In the synthetic example the box is near the edge of the image, which illustrates a localization failure. [All five crops and their model scores](WHERE-THE-MODEL-LOOKS.md)
 
+In a separate foraminal experiment, the same estimated location is projected into an additional axial image. The two-plane guide shows the full scans and the exact center slices of both experimental crops. [See the same region from two directions](RESEARCH.md#test-a-second-mri-plane-for-foraminal-grading)
+
 ## 3. Read the model output
 
 A residual image encoder describes the crops. Five higher-resolution graders score the original and reflected crops when the orientation check passes. The system puts the reflected predictions back into the original side order and averages the two passes. The result is then averaged with the grade-adjusted original-grid prediction. The trace records the crop coordinates, fold scores and final blend. [Trace](examples/study-trace.json)
